@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="260" viewBox="0 0 1000 260" fill="none">
+  <g id="mark">
+    <rect x="40" y="131" width="36" height="69" rx="8" fill="#22C55E"/>
+    <rect x="88" y="107" width="36" height="93" rx="8" fill="#3B82F6"/>
+    <rect x="136" y="80" width="36" height="120" rx="8" fill="#2DD4BF"/>
+  </g>
+  <text x="204" y="200" fill="#F5F7FA" font-family="Inter, SF Pro Display, Segoe UI, Helvetica Neue, Arial, sans-serif" font-size="170" font-weight="700" letter-spacing="-1">Agentify</text>
+</svg>

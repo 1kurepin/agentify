@@ -135,6 +135,90 @@ Create draft files in `temp/kb-drafts/`:
 3. Copy approved content to `docs/`
 ```
 
+**Wait for user approval before proceeding to Step 5.**
+
+---
+
+## Step 5: Apply Approved KB (After User Approval)
+
+When user approves the KB drafts:
+
+### 5.1 Copy Files to docs/
+
+Copy each approved draft from `temp/kb-drafts/` to `docs/`:
+- Remove `(Draft)` from titles
+- Remove `.draft` from filenames
+- Example: `glossary.draft.md` → `docs/glossary.md`
+
+### 5.2 Update docs/README.md
+
+Replace placeholder content with actual file list:
+
+```markdown
+# Knowledge Base
+
+Project documentation for AI agents.
+
+## Available Files
+
+- [project_context.md](project_context.md) — Project overview (start here)
+- [glossary.md](glossary.md) — Project terminology
+- [domain.md](domain.md) — Business entities and rules
+- [architecture.md](architecture.md) — System structure
+- [constraints.md](constraints.md) — Critical project rules
+
+## Maintenance
+
+These files were auto-generated from repository scan and then approved. Update them as the project evolves to keep agent context accurate.
+```
+
+### 5.3 Update AGENTS.md Knowledge Base Section
+
+Find the `### Knowledge Base` section in `AGENTS.md` and update it to reflect the populated KB:
+
+**Before** (placeholder):
+```markdown
+### Knowledge Base
+
+Project-specific knowledge in `./docs`:
+- `project_context.md` — Project overview (read first)
+- `glossary.md` — Project terminology
+...
+```
+
+**After** (populated):
+```markdown
+### Knowledge Base
+
+**READ THESE FILES** before working on unfamiliar code or domain concepts.
+
+Project-specific knowledge in `./docs`:
+- `project_context.md` — **Start here**: Business model, use cases, tech stack
+- `glossary.md` — Domain terminology ([X] terms defined)
+- `domain.md` — Core entities, relationships, business rules
+- `architecture.md` — System components, integrations, infrastructure
+- `constraints.md` — Technical and business constraints (must follow)
+```
+
+Replace `[X]` with actual count of confirmed terms from glossary.
+
+### 5.4 Report Completion
+
+```markdown
+## ✅ Knowledge Base Created
+
+**Moved to docs/:**
+- [list files copied]
+
+**Updated:**
+- docs/README.md — Index of KB files
+- AGENTS.md — KB section now references populated files
+
+**Draft files remain in** `temp/kb-drafts/` for reference.
+
+Your AI agent now has comprehensive context about the project.
+```
+
 ---
 
 ## Honesty Policy

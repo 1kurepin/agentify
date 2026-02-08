@@ -1,40 +1,23 @@
-# Agentify — Mini Style Guide (v0.1)
+# Agentify mini style guide (sandwich mark)
 
-## Logo construction
-**Mark:** 3 vertical columns, equal width, increasing height left→right (foundation + growth + 3 layers).
+## Colors
+- Background gradient (recommended): **#061529 → #032E37**
+- Wordmark text: **#F5F7FA**
+- Mark layers (top → bottom): **#2DD4BF / #3B82F6 / #22C55E**
 
-- Column width (**w**): `w`
-- Gap between columns: `0.35w`
-- Heights (relative to max height):
-  - Col 1: `0.58H`
-  - Col 2: `0.78H`
-  - Col 3: `1.00H`
-- Corner radius: `0.22w` (subtle rounding)
+## Mark meaning
+- 3 layers → 3-layer architecture (core / knowledge base / skills-workflows)
+- Foundation + growth: widths expand downward; stack reads as steps / base
 
-**Wordmark:** “Agentify” — modern neutral sans-serif, **Semibold/Bold** (weight 600–700), slight negative tracking.
+## Mark geometry (relative)
+- Stack height == cap-height of the capital **“A”** in Agentify (in the lockup)
+- Right edges aligned
+- Width ratios (bottom = 1.00): **top 0.584 / mid 0.788 / bottom 1.000**
+- Gap to layer ratio: **gap = 0.36 × layer height**
+- Bottom width vs stack height: **0.76 × stack height**
+- Corner radius: **~0.33 × layer height**
 
-## Spacing
-- Space between mark and wordmark: `~0.9w`
-- Minimum clear space around the full lockup: `>= 1.0w` on all sides
-- For multi-line cover text: align all lines to the **left edge of the mark** (same x-axis).
-
-## Color palette
-**Mark columns**
-- Green: `#22C55E`
-- Blue:  `#3B82F6`
-- Teal:  `#2DD4BF`
-
-**Text**
-- Near-white: `#F5F7FA`
-
-**Background (recommended)**
-- Gradient start (navy): `#061529`
-- Gradient end (deep teal): `#032E37`
-
-Optional structural grid (very subtle):
-- Color: `#F5F7FA` at ~4% opacity
-- Do **not** draw grid over the logo/primary text area.
-
-## GitHub Social Preview (1280×640)
-- Recommended safe margins: `64px`
-- Logo lockup: place in left ~40% of the canvas, leave right side for title/summary text.
+## Lockup layout
+- Mark left, wordmark right
+- Mark height == capital “A” height
+- Mark → word spacing: ~0.22×(mark height)

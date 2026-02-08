@@ -1,7 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="220" height="260" viewBox="0 0 220 260" fill="none">
-  <g id="mark">
-    <rect x="40" y="131" width="36" height="69" rx="8" fill="#22C55E"/>
-    <rect x="88" y="107" width="36" height="93" rx="8" fill="#3B82F6"/>
-    <rect x="136" y="80" width="36" height="120" rx="8" fill="#2DD4BF"/>
-  </g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <rect x="165" y="85.0" width="152" height="92" rx="30" fill="#2DD4BF"/>
+  <rect x="111" y="210.0" width="206" height="92" rx="30" fill="#3B82F6"/>
+  <rect x="56" y="335.0" width="261" height="92" rx="30" fill="#22C55E"/>
 </svg>

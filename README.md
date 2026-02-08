@@ -4,13 +4,15 @@
   <img src="assets/brand/agentify_theme_logo_variants/agentify_logo_light_tight.png" alt="Agentify" width="520">
 </picture>
 
-**Foundation for AI-assisted development.**  
+**Tool-agnostic framework for AI coding agents.**  
 One-time setup. Safe defaults. Layered growth.
 
-## About Agentify
+# Agentify
 
-Agentify is a lightweight framework that makes projects AI-agent-ready.  
-It gives you a concise rules foundation, optional project context, and optional extension layers for advanced use.
+Agentify helps you make any repository AI-agent-ready with:
+- an `AGENTS.md` template and universal safety rules;
+- a project knowledge base structure (`docs/`);
+- extensibility via Skills and Workflows.
 
 ---
 
@@ -21,6 +23,15 @@ It gives you a concise rules foundation, optional project context, and optional 
 - **Layer 3 (optional):** skills and workflows for advanced behavior
 
 See the core template: [framework/AGENTS.template.md](framework/AGENTS.template.md)
+
+---
+
+## Common Use Cases
+
+- Bootstrap an `AGENTS.md` template for a new or existing project
+- Add AI coding assistant rules without stack lock-in
+- Improve coding-agent consistency with project context in `docs/`
+- Add reusable review and quality workflows for AI-assisted development
 
 ---
 

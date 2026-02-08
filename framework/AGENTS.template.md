@@ -10,6 +10,8 @@
 |----------------|------|
 | Unsure about a fact | Mark as `TBD`, don't invent |
 | Making breaking changes | STOP → get explicit approval |
+| Starting implementation | Share plan first, get user approval, then execute |
+| Working on large tasks | Save detailed plan in `temp/feature-short-name-plan-YYYY-MM-DD.md` |
 | Adding new code | Find existing patterns first, copy them |
 | Stuck after 2-3 attempts | Validate assumptions, don't force |
 | Done with a task | Verify: compiles, tests pass, no secrets |
@@ -116,12 +118,29 @@ When corrected:
 
 ## Task Execution
 
-### Workflow: Clarify → Plan → Execute → Verify
+### Workflow: Clarify → Plan → Confirm → Execute → Verify
 
 1. **Clarify**: If requirements unclear, ask 1-3 targeted questions
 2. **Plan**: Break work into small, verifiable steps
-3. **Execute**: One step at a time; verify before next step
-4. **Verify**: Self-review before claiming "done"
+3. **Confirm**: Present plan, ask for agreement/comments/questions, update plan
+4. **Execute**: Start only after explicit user approval; verify before next step
+5. **Verify**: Self-review before claiming "done"
+
+### Plan Alignment (Mandatory Before Execution)
+
+Before any code changes or command execution:
+1. Present the proposed plan to the user
+2. Ask if the user agrees and if there are comments or constraints
+3. Ask targeted questions if something is still unclear
+4. Update the plan based on user feedback
+5. Wait for explicit approval, then execute
+
+### Large Task Plan File
+
+If task scope is large (many files, many steps, or multi-stage work):
+1. Create `temp/feature-short-name-plan-YYYY-MM-DD.md` before execution
+2. Include goal, scope, assumptions, and detailed step-by-step plan
+3. Use it as reference and update it as decisions change
 
 ### Small Steps
 
@@ -170,6 +189,8 @@ Signs of being stuck:
 - [ ] Requirements clear?
 - [ ] Breaking changes identified?
 - [ ] Approval obtained (if breaking/risky)?
+- [ ] Plan presented and approved by user?
+- [ ] Large task plan saved to `temp/feature-short-name-plan-YYYY-MM-DD.md` (if applicable)?
 
 ### Before Claiming "Done"
 

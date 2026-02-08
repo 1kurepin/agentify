@@ -5,13 +5,13 @@ All notable changes to Agentify will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2026-02-07
+## [1.0.0] - 2026-02-08
 
 ### Added
 
 - Initial release
 - Core agent rules template (concise, focused)
-- Automated setup prompt (4 questions)
+- Automated setup prompt (3 questions)
 - Support for AI tools: Copilot, Cursor, Claude, Other
 - Knowledge Base structure (docs/)
 - Default skill: code-quality

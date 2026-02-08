@@ -208,7 +208,12 @@ Apply these to AGENTS.md? (yes / edit / no)
 
 **Draft files remain in** `temp/kb-drafts/` for reference.
 
-Your AI agent now has comprehensive context about the project.
+**Optional next steps:**
+1. **Refine KB details** — Run `.agentify/questionnaires/kb-builder.md` to clarify TBD items and improve accuracy.
+2. **Add skills and workflows** — Run `.agentify/questionnaires/skills-builder.md` to create or update project-specific skills/workflows.
+3. **Skip for now** — Keep current KB as-is and continue coding.
+
+Want to run one of these now? (1 / 2 / 3)
 ```
 
 ---

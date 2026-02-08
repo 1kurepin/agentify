@@ -120,21 +120,27 @@ Based on AI tool from Step 1, create appropriate config:
 **Copilot** → `.github/copilot-instructions.md`:
 ```markdown
 Read [AGENTS.md](../AGENTS.md) for agent instructions.
-Apply this order: general rules in `AGENTS.md` -> matching workflow in `.github/prompts/` (if trigger) -> relevant skills in `.github/skills/` (if trigger/topic).
+Before default behavior, check `.github/prompts/*.prompt.md` for a `**Trigger**` phrase match with the user request.
+If a workflow matches, read that workflow file first and follow it before loading skills or running generic actions.
+Apply this order: general rules in `AGENTS.md` -> matched workflow in `.github/prompts/` -> relevant skills in `.github/skills/` (if relevant).
 If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
 ```
 
 **Cursor** → `.cursorrules`:
 ```markdown
 Read AGENTS.md in project root for instructions.
-Apply this order: general rules in `AGENTS.md` -> matching workflow in `.cursor/prompts/` (if trigger) -> relevant skills in `.cursor/skills/` (if trigger/topic).
+Before default behavior, check `.cursor/prompts/*.prompt.md` for a `**Trigger**` phrase match with the user request.
+If a workflow matches, read that workflow file first and follow it before loading skills or running generic actions.
+Apply this order: general rules in `AGENTS.md` -> matched workflow in `.cursor/prompts/` -> relevant skills in `.cursor/skills/` (if relevant).
 If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
 ```
 
 **Claude** → `CLAUDE.md`:
 ```markdown
 Read AGENTS.md for agent instructions.
-Apply this order: general rules in `AGENTS.md` -> matching workflow in `.claude/prompts/` (if trigger) -> relevant skills in `.claude/skills/` (if trigger/topic).
+Before default behavior, check `.claude/prompts/*.prompt.md` for a `**Trigger**` phrase match with the user request.
+If a workflow matches, read that workflow file first and follow it before loading skills or running generic actions.
+Apply this order: general rules in `AGENTS.md` -> matched workflow in `.claude/prompts/` -> relevant skills in `.claude/skills/` (if relevant).
 If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
 ```
 
@@ -156,7 +162,7 @@ If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
 
 **Ready to use:**
 - Write code → Agent follows code-quality skill
-- Review code → Run "code review" or `[workflows_path]/code-review.prompt.md`
+- Review code → Ask "Review my changes" or "Code review" to trigger `[workflows_path]/code-review.prompt.md`
 - After architecture/domain/constraints/contract changes → check KB impact and update `docs/` files if needed
 
 **Next steps (optional):**

@@ -9,7 +9,8 @@
 | When You're... | Rule |
 |----------------|------|
 | Any task | Apply the general rules in this file first; keep them active throughout |
-| User request matches a workflow trigger | After general rules, read matching file in `{{WORKFLOWS_PATH}}` and follow it |
+| Before default behavior | Check workflow files in `{{WORKFLOWS_PATH}}` for a `**Trigger**` phrase match with the user request |
+| User request matches a workflow trigger | Read the matching workflow file first and follow it before generic actions |
 | User request matches a skill trigger/topic | After general rules and active workflow, load relevant skills from `{{SKILLS_PATH}}` |
 | Unsure about a fact | Mark as `TBD`, don't invent |
 | Making breaking changes | STOP → get explicit approval |
@@ -266,9 +267,10 @@ Read KB files before implementation when:
 
 ### Skills & Workflows
 
-- Skills: `{{SKILLS_PATH}}` (load when request matches a skill trigger phrase or topic)
-- Workflows: `{{WORKFLOWS_PATH}}` (if request matches a workflow trigger phrase, read that workflow file first, then follow it)
-- Execution order: general rules in this file → workflow (if triggered) → skills (if relevant)
+- Workflows: `{{WORKFLOWS_PATH}}` (before default behavior, check `**Trigger**` phrase matches with the user request)
+- If a workflow matches: read it first and execute it before generic actions
+- Skills: `{{SKILLS_PATH}}` (load after active workflow when request matches a skill trigger phrase or topic)
+- Execution order: general rules in this file → workflow trigger check → matched workflow (if any) → skills (if relevant)
 - Conflict priority: general rules > workflow > skill
 
 ### Project-Specific Rules

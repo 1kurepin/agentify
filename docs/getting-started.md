@@ -131,6 +131,11 @@ Use the config format that matches your tool:
 | Claude Code | `CLAUDE.md` with: `Read AGENTS.md for agent instructions.` |
 | Codex / Windsurf / Other | Point your tool to `AGENTS.md` in project root |
 
+Include workflow activation order in tool config:
+- Before generic actions, check prompts folder workflow `**Trigger**` phrases against user request
+- If matched, read and execute that workflow first
+- Then load relevant skills
+
 ---
 
 ## After Setup — Layer 1 Complete
@@ -293,7 +298,15 @@ Run setup again and choose the correct AI tool when asked.
 1. Check `AGENTS.md` exists in project root
 2. For Copilot: Verify `.github/copilot-instructions.md` points to it
 3. For Cursor: Verify `.cursorrules` mentions it
-4. Try explicitly asking: "Read AGENTS.md first, then..."
+4. Verify tool config includes workflow trigger checking before default behavior
+5. Try explicitly asking: "Read AGENTS.md, check workflow triggers, then proceed"
+
+### Workflow trigger not activating
+
+1. Check workflow file is in prompts folder and uses `*.prompt.md` naming
+2. Confirm workflow has a `**Trigger**: "phrase 1", "phrase 2"` line near top
+3. Test exact trigger phrases first (for default code review: "Review my changes", "Code review", "Review current branch")
+4. If exact phrases work but variants fail, add explicit phrase variants to `**Trigger**`
 
 ---
 

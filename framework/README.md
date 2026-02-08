@@ -149,7 +149,8 @@ Manual option:
 
 Use `**When to load**` and `**Trigger phrases**` in each skill file.
 Use a `**Trigger**: "phrase 1", "phrase 2"` line in each workflow file.
-Execution order: general rules in `AGENTS.md` -> matching workflow (if trigger) -> relevant skills (if trigger/topic).
+Before default behavior, compare the user request with workflow `**Trigger**` phrases in your prompts folder.
+Execution order: general rules in `AGENTS.md` -> workflow trigger check -> matched workflow (if any) -> relevant skills (if relevant).
 If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
 
 ---

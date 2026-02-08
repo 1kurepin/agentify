@@ -1,4 +1,4 @@
-# Framework Evaluation: Post-Setup Review
+# Framework Evaluation: Deployment Review
 
 **Developer-only prompt for Agentify maintainers. Not for end users.**
 
@@ -6,7 +6,12 @@
 
 ## Instructions for Agent
 
-Evaluate how well Agentify setup worked in the current project.
+Evaluate how well Agentify deployment worked in the current project.
+
+Deployment includes:
+- Baseline setup via `.agentify/setup.prompt.md`
+- Optional KB enrichment via `.agentify/questionnaires/kb-builder.md`
+- Optional KB auto-scan via `.agentify/bootstrap-prompts/repo-scan.prompt.md`
 
 Use evidence from files. Do not guess. Mark unknowns as `TBD`.
 
@@ -14,14 +19,31 @@ Use evidence from files. Do not guess. Mark unknowns as `TBD`.
 
 ## Step 1: Collect Evidence
 
-Inspect the project for setup outputs:
+Inspect the project and mark each item as `Present`, `Missing`, or `TBD`.
+
+### Baseline setup outputs (required)
 
 - `AGENTS.md`
-- `docs/` folder (and KB files if created later)
+- `docs/` folder
+- `docs/README.md`
 - Skills/workflows folders (tool-specific)
 - Tool config (`.github/copilot-instructions.md`, `.cursorrules`, `CLAUDE.md`, or equivalent)
 
-List what exists, what is missing, and what looks inconsistent.
+### Optional extension outputs (only if those flows were run)
+
+- KB files in `docs/`:
+  - `project_context.md`
+  - `glossary.md`
+  - `domain.md`
+  - `architecture.md`
+  - `constraints.md`
+- Repo-scan drafts in `temp/kb-drafts/`
+- `AGENTS.md` `Project-Specific Rules` updated from starter block (if approved)
+
+Interpretation rules:
+- Missing KB files are **not** a setup failure by themselves.
+- If project-specific rules were updated, verify they are concrete and plausibly sourced from KB/answers.
+- If approval evidence is unavailable, mark as `TBD`, do not invent.
 
 If `AGENTS.md` is missing, stop and report a critical failure.
 
@@ -31,12 +53,12 @@ If `AGENTS.md` is missing, stop and report a critical failure.
 
 Score each dimension from `0` (failed) to `5` (strong), with evidence.
 
-1. Setup completeness
+1. Setup deployment completeness
 2. Core rule quality (concise, universal, tool-agnostic)
 3. Safety coverage (honesty, stop-the-line, verification, security, pattern discovery)
-4. Editability (user can modify directly, no regen dependency)
-5. Extension readiness (KB + skills/workflows quality)
-6. Clarity (easy for a developer to understand what to do next)
+4. User control (editable output, no regen dependency, approval gating for project-specific rules)
+5. Extension flow integrity (`kb-builder`/`repo-scan` create-or-update behavior)
+6. Documentation consistency (prompts and docs agree on expected flow)
 
 ---
 
@@ -75,10 +97,23 @@ Do not move technology-specific rules into core.
 
 ---
 
+## Step 5: Save Report to File
+
+Create `temp/` if it doesn't exist.
+
+Save the full evaluation report (from "Output Format") to a markdown file in `temp/`:
+- Preferred filename: `temp/agentify-framework-eval-YYYY-MM-DD.md`
+- If that file already exists, use: `temp/agentify-framework-eval-YYYY-MM-DD-HHMMSS.md`
+- The filename must start with `agentify`
+
+Do not skip file creation. The evaluation is complete only after the markdown file is written.
+
+---
+
 ## Output Format
 
 ```markdown
-# Agentify Post-Setup Evaluation
+# Agentify Post-Deployment Evaluation
 
 ## Verdict
 - Overall: Strong / Medium / Weak
@@ -87,12 +122,12 @@ Do not move technology-specific rules into core.
 ## Scorecard
 | Dimension | Score (0-5) | Evidence |
 |-----------|-------------|----------|
-| Setup completeness | X | [file/path + note] |
+| Setup deployment completeness | X | [file/path + note] |
 | Core rule quality | X | [file/path + note] |
 | Safety coverage | X | [file/path + note] |
-| Editability | X | [file/path + note] |
-| Extension readiness | X | [file/path + note] |
-| Clarity | X | [file/path + note] |
+| User control | X | [file/path + note] |
+| Extension flow integrity | X | [file/path + note] |
+| Documentation consistency | X | [file/path + note] |
 
 ## Strengths
 1. ...
@@ -113,4 +148,8 @@ Do not move technology-specific rules into core.
 ## Open Questions / TBD
 - ...
 ```
+
+After writing the file, return a short completion note with:
+- Saved file path
+- Overall verdict
 

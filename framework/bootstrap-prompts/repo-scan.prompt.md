@@ -165,13 +165,11 @@ Project-specific knowledge in `./docs`:
 
 Project-specific knowledge in `./docs`:
 - `project_context.md` — **Start here**: Business model, use cases, tech stack
-- `glossary.md` — Domain terminology ([X] terms defined)
+- `glossary.md` — Domain terminology
 - `domain.md` — Core entities, relationships, business rules
 - `architecture.md` — System components, integrations, infrastructure
 - `constraints.md` — Technical and business constraints (must follow)
 ```
-
-Replace `[X]` with actual count of confirmed terms from glossary.
 
 ### 5.4 Suggest Project-Specific Rules for AGENTS.md
 

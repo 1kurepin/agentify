@@ -6,7 +6,37 @@
 
 ## Instructions for Agent
 
-This questionnaire helps identify and create skills (specialized knowledge) and workflows (repeatable procedures) for the project. Ask questions one section at a time.
+This questionnaire creates or updates skills (specialized knowledge) and workflows (repeatable procedures) from two sources:
+- KB files in `docs/`
+- User answers from this questionnaire
+
+Ask one section at a time. Wait for answers before moving on.
+
+### Required KB Sources
+
+Before suggesting files, read these if they exist:
+- `docs/project_context.md`
+- `docs/domain.md`
+- `docs/constraints.md`
+- `docs/architecture.md`
+- `docs/glossary.md`
+
+Use KB as baseline context. Use user answers to add or correct details.
+If information is unknown, keep it as `TBD` (do not invent).
+
+### File Update Policy (Create-or-Update)
+
+For each selected skill/workflow file:
+- If file doesn't exist, create it from the matching external template
+- If file exists, update only sections changed by confirmed information
+- Preserve useful user-written content
+- Remove contradictions instead of appending duplicate sections
+- Keep headings stable (no duplicate heading blocks)
+
+### Naming Convention
+
+- Skill files: `*.skill.md`
+- Workflow files: `*.prompt.md`
 
 ---
 
@@ -19,10 +49,10 @@ Let's identify skills and workflows your agent needs.
 1. **What tasks do you do most frequently?**
    (e.g., "Add new API endpoint", "Fix failing tests", "Deploy to staging")
 
-2. **Which of these tasks have specific steps that MUST be followed?**
+2. **Which tasks have strict required steps?**
    (candidates for workflows)
 
-3. **Which tasks often go wrong without specific knowledge?**
+3. **Which tasks fail without project-specific knowledge?**
    (candidates for skills)
 ```
 
@@ -32,34 +62,27 @@ Let's identify skills and workflows your agent needs.
 
 Ask user:
 ```
-Now let's identify specialized knowledge:
+Now let's identify skill topics:
 
 1. **What libraries/tools have non-obvious usage patterns?**
-   (where "read the docs" isn't enough)
-
-2. **What areas have project-specific conventions?**
-   (e.g., "We always use X pattern for Y", "Error handling must do Z")
-
-3. **Where do agents typically make mistakes in your codebase?**
-   (areas needing explicit guidance)
+2. **What project conventions are easy to violate?**
+3. **Where do agents most often make mistakes?**
 ```
 
-Based on answers, suggest skills to create:
+Then suggest skills from KB + answers:
 
 ```markdown
 ## Suggested Skills
 
-Based on your answers, consider creating:
-
 | Skill | Purpose | Example Path |
 |-------|---------|-------------|
-| [topic]-patterns | How to use [library/pattern] correctly | `[skills_path]/[topic]-patterns.md` |
-| code-style | Project-specific coding conventions | `[skills_path]/code-style.md` |
-| [domain]-knowledge | Domain-specific rules and constraints | `[skills_path]/[domain]-knowledge.md` |
+| [topic]-patterns | Correct usage patterns for [topic] | `[skills_path]/[topic]-patterns.skill.md` |
+| code-style | Project coding conventions | `[skills_path]/code-style.skill.md` |
+| [domain]-knowledge | Domain rules and invariants | `[skills_path]/[domain]-knowledge.skill.md` |
 
 **Note**: `[skills_path]` = `.github/skills/` for Copilot, `.cursor/skills/` for Cursor, etc.
 
-Want me to create templates for any of these? (list which ones)
+Which skills should I draft? (list names, or `skip`)
 ```
 
 ---
@@ -68,165 +91,79 @@ Want me to create templates for any of these? (list which ones)
 
 Ask user:
 ```
-Now let's identify workflows:
+Now let's identify workflow topics:
 
 1. **What checks happen before code is merged?**
-   (review, testing, approval requirements)
-
-2. **What's your deployment process?**
-   (steps from "code done" to "in production")
-
-3. **How do you handle common scenarios?**
-   - Bug fix process?
-   - New feature process?
-   - Breaking change process?
-   - Security issue process?
+2. **What steps happen between "code done" and production?**
+3. **Which recurring scenarios need a fixed procedure?**
+   (bug fix, new feature, breaking change, security issue, etc.)
 ```
 
-Based on answers, suggest workflows to create:
+Then suggest workflows from KB + answers:
 
 ```markdown
 ## Suggested Workflows
 
-Based on your answers, consider creating:
-
 | Workflow | Purpose | Example Path |
 |----------|---------|-------------|
-| code-review | Steps for code review | `[prompts_path]/code-review.md` |
-| deploy | Deployment checklist | `[prompts_path]/deploy.md` |
-| bug-fix | Bug fix process | `[prompts_path]/bug-fix.md` |
-| breaking-change | Safe breaking change process | `[prompts_path]/breaking-change.md` |
+| code-review | Review checklist and gates | `[workflows_path]/code-review.prompt.md` |
+| deploy | Deployment readiness and execution steps | `[workflows_path]/deploy.prompt.md` |
+| bug-fix | Safe bug investigation and fix flow | `[workflows_path]/bug-fix.prompt.md` |
+| breaking-change | Controlled breaking-change rollout | `[workflows_path]/breaking-change.prompt.md` |
 
-**Note**: `[prompts_path]` = `.github/prompts/` for Copilot, `.cursor/prompts/` for Cursor, etc.
+**Note**: `[workflows_path]` = `.github/prompts/` for Copilot, `.cursor/prompts/` for Cursor, etc.
 
-Want me to create templates for any of these? (list which ones)
+Which workflows should I draft? (list names, or `skip`)
 ```
 
 ---
 
-## Section 4: Create Files
+## Section 4: Draft and Confirm Before Write
 
-For each skill user wants, create from template:
+For selected skills:
+- Use `.agentify/templates/skills/skill.template.md`
+- Fill placeholders using KB + user answers
 
+For selected workflows:
+- Use `.agentify/templates/workflows/workflow.template.md`
+- Fill placeholders using KB + user answers
+
+Before writing any files, show a draft plan:
+- Target file path
+- Action: `create` or `update`
+- Short rationale (what information was used)
+
+Ask user:
 ```markdown
-# Skill: [SKILL_NAME]
-
-**When to load**: [trigger phrase or scenario]
-
----
-
-## Overview
-
-[What this skill covers]
-
----
-
-## Rules
-
-1. [Rule 1]
-2. [Rule 2]
-3. [Rule 3]
-
----
-
-## Patterns
-
-### Pattern: [Name]
-
-**When**: [scenario]
-
-**Do**:
-```
-[correct approach]
+Apply these file changes? (yes / edit / no)
 ```
 
-**Don't**:
-```
-[incorrect approach]
-```
-
----
-
-## Examples
-
-[Real examples from codebase if available]
-
----
-
-## Common Mistakes
-
-| Mistake | Why It's Wrong | Correct Approach |
-|---------|----------------|------------------|
-| | | |
-```
-
-For each workflow user wants, create from template:
-
-```markdown
-# Workflow: [WORKFLOW_NAME]
-
-**Trigger**: [when to use this workflow]
-
----
-
-## Prerequisites
-
-- [ ] [What must be true before starting]
-
----
-
-## Steps
-
-### Step 1: [Name]
-
-[Description]
-
-- [ ] [Checkbox item]
-- [ ] [Checkbox item]
-
-### Step 2: [Name]
-
-[Description]
-
-- [ ] [Checkbox item]
-
----
-
-## Completion
-
-Before marking done:
-
-- [ ] [Final check 1]
-- [ ] [Final check 2]
-
----
-
-## Notes
-
-[Any additional context]
-```
+Handle response:
+- `yes` -> create or update files
+- `edit` -> apply user edits to draft content, then ask `yes / edit / no` again
+- `no` -> do not write files
 
 ---
 
 ## Section 5: Summary
 
 ```markdown
-## ✅ Skills & Workflows Created
+## ✅ Skills & Workflows Updated
 
-**Skills created:**
-- `[skills_path]/[name].md`
+**Skills created/updated:**
+- `[skills_path]/[name].skill.md`
 - ...
 
-**Workflows created:**
-- `[prompts_path]/[name].md`
+**Workflows created/updated:**
+- `[workflows_path]/[name].prompt.md`
 - ...
 
 **How to use:**
-- Skills: Agent loads when topic is mentioned
-- Workflows: Run with "Run [prompts_path]/[name].md"
+- Skills load by topic/trigger
+- Workflows run from prompts folder
 
 **Next steps:**
 - Review and customize created files
-- Add examples from your actual codebase
+- Add examples from your codebase
 - Test with your agent
 ```

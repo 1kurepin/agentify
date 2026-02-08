@@ -112,7 +112,7 @@ Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` — agent scans your repo,
 
 ### Option C: Skills & Workflows
 
-Run `.agentify/questionnaires/skills-builder.md` — create custom skills (specialized knowledge) and workflows (repeatable processes).
+Run `.agentify/questionnaires/skills-builder.md` — agent reads KB files in `docs/` plus your answers, prepares create-or-update changes from templates, then asks `yes / edit / no` before writing skills (`*.skill.md`) and workflows (`*.prompt.md`).
 
 **Ongoing maintenance default**: after architecture/domain/constraints/contract changes, check KB impact and update affected files in `docs/`.
 
@@ -134,13 +134,17 @@ Run `.agentify/questionnaires/skills-builder.md` — create custom skills (speci
 
 ## Adding Skills & Workflows
 
+Use `.agentify/questionnaires/skills-builder.md` for KB-aware create-or-update flow with explicit confirmation (`yes / edit / no`) before writes.
+
+Manual option:
+
 **Skills** — teach agent specific expertise:
-1. Copy from `.agentify/templates/skills/`
-2. Save to your tool's skills folder (e.g., `.github/skills/` for Copilot, `.cursor/skills/` for Cursor)
+1. Copy `.agentify/templates/skills/skill.template.md`
+2. Save as `[name].skill.md` in your tool's skills folder (e.g., `.github/skills/` for Copilot, `.cursor/skills/` for Cursor)
 
 **Workflows** — repeatable procedures:
-1. Copy from `.agentify/templates/workflows/`
-2. Save to your tool's prompts folder (e.g., `.github/prompts/` for Copilot, `.cursor/prompts/` for Cursor)
+1. Copy `.agentify/templates/workflows/workflow.template.md`
+2. Save as `[name].prompt.md` in your tool's prompts folder (e.g., `.github/prompts/` for Copilot, `.cursor/prompts/` for Cursor)
 
 Use `**When to load**` and `**Trigger phrases**` in each skill file.
 Use a `**Trigger**: "phrase 1", "phrase 2"` line in each workflow file.

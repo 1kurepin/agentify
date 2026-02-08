@@ -196,9 +196,16 @@ The default `code-review` workflow includes a required `KB Impact` result (`none
 Run .agentify/questionnaires/skills-builder.md
 ```
 
+This flow:
+- Reads KB context from `docs/project_context.md`, `docs/domain.md`, `docs/constraints.md`, `docs/architecture.md`, and `docs/glossary.md` (if present)
+- Combines KB with your answers to draft skills/workflows
+- Uses create-or-update behavior for existing files
+- Requires explicit confirmation before writes: `yes / edit / no`
+- Uses naming: `*.skill.md` for skills, `*.prompt.md` for workflows
+
 ### Alternative: Auto-scan Repository
 
-Let the agent analyze your codebase and draft KB/Skills:
+Let the agent analyze your codebase and draft KB:
 
 ```
 Run .agentify/bootstrap-prompts/repo-scan.prompt.md
@@ -261,11 +268,11 @@ Open `AGENTS.md` and edit the "Project-Specific Rules" section:
 
 ### Add Skills
 
-Copy from `.agentify/templates/skills/` to your skills folder.
+Copy `.agentify/templates/skills/skill.template.md` to your skills folder and save as `[name].skill.md`.
 
 ### Add Workflows
 
-Copy from `.agentify/templates/workflows/` to your prompts folder.
+Copy `.agentify/templates/workflows/workflow.template.md` to your prompts folder and save as `[name].prompt.md`.
 
 ---
 

@@ -161,6 +161,16 @@ Skills teach your agent specialized knowledge. Add when you want consistent expe
 - You want consistent code style or patterns
 - Domain-specific expertise needed (API design, security, etc.)
 
+### Questionnaire Approach (Recommended)
+
+Run:
+
+```
+Run .agentify/questionnaires/skills-builder.md
+```
+
+This flow reads KB files (`docs/project_context.md`, `docs/domain.md`, `docs/constraints.md`, `docs/architecture.md`, `docs/glossary.md`) plus your answers, prepares create-or-update changes, and asks `yes / edit / no` before writing files.
+
 ### Skill Structure
 
 ```markdown
@@ -240,11 +250,15 @@ Save to your skills folder:
 - Cursor: `.cursor/skills/api-design.skill.md`
 - etc.
 
+Use `*.skill.md` naming for all skill files.
+
 ---
 
 ## Layer 3: Creating Workflows
 
 Workflows are step-by-step procedures for common tasks.
+
+Use `*.prompt.md` naming for workflow files.
 
 ### Workflow Structure
 
@@ -277,6 +291,13 @@ Workflows are step-by-step procedures for common tasks.
 
 [Expected deliverable]
 ```
+
+### Workflow Placement
+
+Save to your prompts folder:
+- Copilot: `.github/prompts/security-review.prompt.md`
+- Cursor: `.cursor/prompts/security-review.prompt.md`
+- etc.
 
 ### Example: Security Review Workflow
 

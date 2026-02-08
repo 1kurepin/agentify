@@ -1,6 +1,7 @@
 # Workflow: {{WORKFLOW_NAME}}
 
 **{{Brief description of what this workflow accomplishes.}}**
+**Recommended file name**: `{{workflow-slug}}.prompt.md`
 **Trigger**: "{{phrase 1}}", "{{phrase 2}}"
 
 ---

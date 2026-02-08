@@ -1,6 +1,7 @@
 # Skill: {{SKILL_NAME}}
 
 **{{Brief description of what this skill provides.}}**
+**Recommended file name**: `{{skill-slug}}.skill.md`
 
 ---
 

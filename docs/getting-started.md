@@ -12,7 +12,7 @@ Build a foundation for AI-assisted development in your project.
 ## Prerequisites
 
 - A code project (any language, any size)
-- An AI coding assistant (Copilot, Cursor, Aider, Claude, or similar)
+- An AI coding assistant (any agent, including but not limited to GitHub Copilot, Claude Code, Codex, Cursor, Windsurf, and others)
 
 ---
 
@@ -79,7 +79,7 @@ The agent will ask:
 1. **Project name** — e.g., "MyApp Backend"
 2. **One-sentence description** — e.g., "REST API for mobile application"
 3. **Main constraint** — What should never be broken? e.g., "API backward compatibility"
-4. **AI tool** — Which tool are you using? (Copilot/Cursor/Aider/Claude/Other)
+4. **AI tool** — Which tool are you using? (Copilot/Cursor/Claude/Other; choose `Other` for Codex, Windsurf, and unlisted tools)
 
 #### Step 4: Verify output
 
@@ -121,7 +121,14 @@ mkdir -p .github/skills .github/prompts
 
 #### Step 4: Add tool config (optional)
 
-See [Supported Tools](../README.md#supported-tools) for your tool's config file format.
+Use the config format that matches your tool:
+
+| Tool | Config |
+|------|--------|
+| GitHub Copilot | `.github/copilot-instructions.md` with: `Read [AGENTS.md](../AGENTS.md) for agent instructions.` |
+| Cursor | `.cursorrules` with: `Read AGENTS.md in project root for instructions.` |
+| Claude Code | `CLAUDE.md` with: `Read AGENTS.md for agent instructions.` |
+| Codex / Windsurf / Other | Point your tool to `AGENTS.md` in project root |
 
 ---
 
@@ -226,8 +233,9 @@ your-project/
 | GitHub Copilot | `.github/skills/`, `.github/prompts/` |
 | Cursor | `.cursor/skills/`, `.cursor/prompts/` |
 | Claude Code | `.claude/skills/`, `.claude/prompts/` |
-| Aider | Project root or `docs/` |
 | Other | Your choice |
+
+For Codex and Windsurf, choose `Other` during setup.
 
 ---
 

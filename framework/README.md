@@ -8,7 +8,7 @@ One-time setup. Safe defaults. Room to grow. Works with any AI tool.
 
 ## What This Is
 
-A framework that gives AI coding agents (Copilot, Cursor, Aider, Claude, etc.) strong, consistent rules to follow. One prompt to install.
+A framework that gives AI coding agents (Copilot, Cursor, Claude, etc.) strong, consistent rules to follow. One prompt to install.
 
 **Core value:**
 1. **Strong agent rules** (concise & focused) that work immediately
@@ -37,7 +37,7 @@ Run .agentify/setup.prompt.md
 - Project name?
 - One-sentence description?
 - Main constraint? (what should never be broken)
-- Which AI tool? (Copilot/Cursor/Aider/Claude/Other)
+- Which AI tool? (Copilot/Cursor/Claude/Other)
 
 ### 4. Done
 
@@ -45,7 +45,7 @@ Agent creates:
 - `AGENTS.md` — Universal agent rules (concise & focused)
 - `docs/` — Knowledge Base folder
 - Skills & Prompts folders — Location depends on your AI tool
-- Tool config (Copilot/Cursor/Aider/Claude)
+- Tool config (Copilot/Cursor/Claude)
 
 ---
 

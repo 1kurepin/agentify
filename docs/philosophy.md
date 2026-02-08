@@ -72,7 +72,7 @@ Rules must work for:
 - Any project size
 - Any domain (web, mobile, embedded, ML, etc.)
 - Any team size
-- **Any AI tool** (Copilot, Cursor, Aider, Claude, or future tools)
+- **Any AI tool** (including but not limited to GitHub Copilot, Claude Code, Codex, Cursor, Windsurf, and future tools)
 
 **What this means:**
 - No technology assumptions in core rules — works with any stack
@@ -196,7 +196,7 @@ Starting with useful defaults > starting empty.
 
 | We Accept... | In Exchange For... |
 |--------------|-------------------|
-| Limited tool support (5 tools) | Simple configuration |
+| Direct setup presets for a small core tool set | Simple configuration |
 | Concise core rules | Rules that get followed |
 | No enforcement | Guidance over gates |
 | Manual KB building | No magic, no surprises |

@@ -16,11 +16,17 @@ One-time setup creates the foundation. You build on it over time. Works with any
 
 ### Which AI tools does it support?
 
+Any AI agent that can follow markdown instructions.
+
+Including but not limited to:
 - GitHub Copilot
-- Cursor
-- Aider
 - Claude Code
-- Any tool that can read markdown files
+- Codex
+- Cursor
+- Windsurf
+
+Setup has direct presets for Copilot, Cursor, and Claude.  
+For Codex, Windsurf, and unlisted tools, choose `Other` and point to `AGENTS.md`.
 
 ### Do I need to use all features?
 
@@ -205,7 +211,7 @@ You could! But Agentify gives you:
 
 1. **Research-based defaults** — Rules derived from studying agent behavior patterns, best practices from multiple sources, and iterative refinement based on real usage
 2. **Structure for growth** — Not just rules, but a layered architecture for KB, Skills, and Workflows
-3. **Tool-specific setup** — Correct config files for Copilot, Cursor, Aider, Claude
+3. **Tool-specific setup** — Correct config files for Copilot, Cursor, Claude, and `Other` (Codex/Windsurf/etc.)
 4. **Templates** — Starting points for Skills and Workflows so you don't start from zero
 
 Writing from scratch means discovering these patterns yourself. Agentify gives you a head start.

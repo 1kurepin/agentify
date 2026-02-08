@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial release
 - Core agent rules template (concise, focused)
 - Automated setup prompt (4 questions)
-- Support for 5 AI tools: Copilot, Cursor, Aider, Claude, Other
+- Support for AI tools: Copilot, Cursor, Claude, Other
 - Knowledge Base structure (docs/)
 - Default skill: code-quality
 - Default workflow: code-review

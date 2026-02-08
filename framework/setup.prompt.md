@@ -21,7 +21,7 @@ I'll set up agent rules for your project. Quick questions:
 2. **One-sentence description?** (e.g., "REST API for mobile app")
 3. **Main constraint?** What's the ONE rule that should never be broken?
    (e.g., "Don't break the API contract", "No PII in logs", or "N/A" if none)
-4. **Which AI tool do you use?** (Copilot / Cursor / Aider / Claude / Other)
+4. **Which AI tool do you use?** (Copilot / Cursor / Claude / Other; choose Other for Codex, Windsurf, and unlisted tools)
 ```
 
 Wait for answers before proceeding.
@@ -36,7 +36,6 @@ Based on AI tool answer, determine paths:
 |------|-------------|----------------|
 | **Copilot** | `.github/skills/` | `.github/prompts/` |
 | **Cursor** | `.cursor/skills/` | `.cursor/prompts/` |
-| **Aider** | `aider/skills/` | `aider/prompts/` |
 | **Claude** | `.claude/skills/` | `.claude/prompts/` |
 | **Other** | `agent/skills/` | `agent/prompts/` |
 
@@ -120,14 +119,12 @@ Read [AGENTS.md](../AGENTS.md) for agent instructions.
 Read AGENTS.md in project root for instructions.
 ```
 
-**Aider** → Tell user to add `--read AGENTS.md` to their config.
-
 **Claude** → `CLAUDE.md`:
 ```markdown
 Read AGENTS.md for agent instructions.
 ```
 
-**Other** → Tell user to point their tool to `AGENTS.md`.
+**Other** → Tell user to point their tool to `AGENTS.md` (e.g., Codex, Windsurf, or any unlisted tool).
 
 ---
 

@@ -38,7 +38,7 @@ Run .agentify/setup.prompt.md
 - One-sentence description?
 - Which AI tool? (Copilot/Cursor/Claude/Other)
 
-KB files are created or updated later via `.agentify/questionnaires/kb-builder.md` or `.agentify/bootstrap-prompts/repo-scan.prompt.md`.
+Start with `.agentify/bootstrap-prompts/repo-scan.prompt.md` to generate KB drafts, then use `.agentify/questionnaires/kb-builder.md` after draft review to refine or complete KB files.
 
 ### 4. Done
 
@@ -102,13 +102,13 @@ Start with Layer 1. Add more layers as your project needs grow.
 
 After setup, optionally build Knowledge Base:
 
-### Option A: Questionnaire
-
-Run `.agentify/questionnaires/kb-builder.md` — answer questions to create or update KB files and optionally apply project-specific rules to `AGENTS.md`.
-
-### Option B: Auto-scan
+### Option A: Auto-scan (recommended first)
 
 Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` — agent scans your repo, generates drafts, then (after approval) creates/updates KB files and optionally applies project-specific rules to `AGENTS.md`.
+
+### Option B: Questionnaire (after draft review)
+
+Run `.agentify/questionnaires/kb-builder.md` — answer questions to refine or complete KB files and optionally apply project-specific rules to `AGENTS.md`.
 
 ### Option C: Skills & Workflows
 

@@ -86,7 +86,8 @@ Project documentation for AI agents.
 - `architecture.md` — System structure
 - `constraints.md` — Critical project rules
 
-Run `.agentify/questionnaires/kb-builder.md` or `.agentify/bootstrap-prompts/repo-scan.prompt.md` to create or update these files.
+Start with `.agentify/bootstrap-prompts/repo-scan.prompt.md` to generate KB drafts.
+After draft review, run `.agentify/questionnaires/kb-builder.md` to refine or complete KB files.
 
 ## Maintenance
 
@@ -159,11 +160,11 @@ If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
 
 **Next steps (optional):**
 
-1. **Build Knowledge Base** — Run `.agentify/questionnaires/kb-builder.md` to create or update KB files and suggest project-specific rules
+1. **Auto-scan repo first** — Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` to generate KB drafts, review drafts, then create/update docs and suggest project-specific rules
 
-2. **Build more Skills & Workflows** — Run `.agentify/questionnaires/skills-builder.md` to create custom skills and workflows
+2. **Refine with KB questionnaire** — After scan + draft review, run `.agentify/questionnaires/kb-builder.md` to refine/complete KB files and suggest project-specific rules
 
-3. **Auto-scan repo** — Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` to generate KB drafts, then create/update docs and suggest project-specific rules
+3. **Build more Skills & Workflows** — Run `.agentify/questionnaires/skills-builder.md` to create custom skills and workflows
 
 Your agent is ready to use!
 ```

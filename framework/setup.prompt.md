@@ -49,14 +49,19 @@ Read `.agentify/AGENTS.template.md`
 
 Create `AGENTS.md` in project root by replacing placeholders in the template:
 
-| Placeholder | Value |
-|-------------|-------|
-| `{{PROJECT_NAME}}` | User's answer to Q1 |
-| `{{PROJECT_DESCRIPTION}}` | User's answer to Q2 |
-| `{{KB_PATH}}` | `./docs` |
-| `{{SKILLS_PATH}}` | Path from Step 2 |
-| `{{WORKFLOWS_PATH}}` | Path from Step 2 |
-| `{{PROJECT_RULES}}` | `(none yet — add as needed)` |
+- `{{PROJECT_NAME}}` → User's answer to Q1
+- `{{PROJECT_DESCRIPTION}}` → User's answer to Q2
+- `{{KB_PATH}}` → `./docs`
+- `{{SKILLS_PATH}}` → Path from Step 2
+- `{{WORKFLOWS_PATH}}` → Path from Step 2
+- `{{PROJECT_RULES}}` → Use this starter block:
+
+```markdown
+(none yet — add as needed)
+
+Example format:
+- {{PROJECT_RULE}}
+```
 
 ---
 
@@ -73,7 +78,7 @@ Create `docs/README.md`:
 
 Project documentation for AI agents.
 
-## Files to Create
+## Files to Create or Update
 
 - `project_context.md` — Project overview (start here)
 - `glossary.md` — Project terminology
@@ -81,7 +86,7 @@ Project documentation for AI agents.
 - `architecture.md` — System structure
 - `constraints.md` — Critical project rules
 
-Run `.agentify/questionnaires/kb-builder.md` to create these files.
+Run `.agentify/questionnaires/kb-builder.md` or `.agentify/bootstrap-prompts/repo-scan.prompt.md` to create or update these files.
 ```
 
 ---
@@ -143,11 +148,11 @@ Read AGENTS.md for agent instructions.
 
 **Next steps (optional):**
 
-1. **Build Knowledge Base** — Run `.agentify/questionnaires/kb-builder.md` to create glossary, architecture, constraints
+1. **Build Knowledge Base** — Run `.agentify/questionnaires/kb-builder.md` to create or update KB files and suggest project-specific rules
 
 2. **Build more Skills & Workflows** — Run `.agentify/questionnaires/skills-builder.md` to create custom skills and workflows
 
-3. **Auto-scan repo** — Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` to auto-generate KB drafts
+3. **Auto-scan repo** — Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` to generate KB drafts, then create/update docs and suggest project-specific rules
 
 Your agent is ready to use!
 ```

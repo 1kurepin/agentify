@@ -58,6 +58,47 @@ Look for:
 
 Create draft files in `temp/kb-drafts/`:
 
+### project_context.draft.md
+
+```markdown
+# Project Context (Draft)
+
+## What This Is
+[inferred from README/docs, or TBD]
+
+## Tech Stack
+[from config files and repo evidence]
+
+## What This Is NOT
+[scope boundaries from repo evidence, or TBD]
+
+## Evidence
+- [file path and short note]
+
+## TBD
+- [what still needs user confirmation]
+```
+
+### domain.draft.md
+
+```markdown
+# Domain (Draft)
+
+## Core Entities
+| Entity | Description | Source |
+|--------|-------------|--------|
+| [entity] | [meaning] | [file] |
+
+## Entity Relationships
+[from code/docs, or TBD]
+
+## Business Rules
+[from validations/tests/docs, or TBD]
+
+## TBD
+- [domain points needing clarification]
+```
+
 ### glossary.draft.md
 
 ```markdown
@@ -117,6 +158,8 @@ Create draft files in `temp/kb-drafts/`:
 **Date**: [date]
 
 ## Files Created
+- temp/kb-drafts/project_context.draft.md
+- temp/kb-drafts/domain.draft.md
 - temp/kb-drafts/glossary.draft.md
 - temp/kb-drafts/architecture.draft.md
 - temp/kb-drafts/constraints.draft.md
@@ -132,7 +175,7 @@ Create draft files in `temp/kb-drafts/`:
 ## Next Steps
 1. Review draft files
 2. Answer TBD questions
-3. Copy approved content to `docs/`
+3. Create or update `docs/` with approved content
 ```
 
 **Wait for user approval before proceeding to Step 5.**
@@ -143,12 +186,14 @@ Create draft files in `temp/kb-drafts/`:
 
 When user approves the KB drafts:
 
-### 5.1 Copy Files to docs/
+### 5.1 Create or Update Files in docs/
 
-Copy each approved draft from `temp/kb-drafts/` to `docs/`:
+For each approved draft from `temp/kb-drafts/`, create or update matching file in `docs/`:
 - Remove `(Draft)` from titles
 - Remove `.draft` from filenames
 - Example: `glossary.draft.md` → `docs/glossary.md`
+- If target file doesn't exist, create it
+- If target file exists, update relevant sections with approved information (don't duplicate sections)
 
 ### 5.2 Update docs/README.md
 
@@ -202,17 +247,40 @@ Project-specific knowledge in `./docs`:
 
 Replace `[X]` with actual count of confirmed terms from glossary.
 
-### 5.4 Report Completion
+### 5.4 Suggest Project-Specific Rules for AGENTS.md
+
+Generate up to 3 candidate project-specific rules from approved KB content:
+- `docs/constraints.md` (critical rules/invariants)
+- `docs/domain.md` (business rules)
+- `docs/project_context.md` (scope boundaries)
+
+Do not invent. If no strong candidates exist, skip this step.
+
+Ask user:
+```markdown
+Suggested project-specific rules:
+1. ...
+2. ...
+
+Apply these to AGENTS.md? (yes / edit / no)
+```
+
+- `yes` → update `AGENTS.md` section `### Project-Specific Rules`
+- `edit` → apply user-edited list
+- `no` → leave rules section unchanged
+
+### 5.5 Report Completion
 
 ```markdown
-## ✅ Knowledge Base Created
+## ✅ Knowledge Base Updated
 
-**Moved to docs/:**
-- [list files copied]
+**Created/updated in docs/:**
+- [list files created or updated]
 
 **Updated:**
 - docs/README.md — Index of KB files
 - AGENTS.md — KB section now references populated files
+- AGENTS.md — Project-Specific Rules (if approved)
 
 **Draft files remain in** `temp/kb-drafts/` for reference.
 

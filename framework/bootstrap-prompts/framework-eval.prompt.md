@@ -17,7 +17,7 @@ Use evidence from files. Do not guess. Mark unknowns as `TBD`.
 Inspect the project for setup outputs:
 
 - `AGENTS.md`
-- `docs/` and its starter files
+- `docs/` folder (and KB files if created later)
 - Skills/workflows folders (tool-specific)
 - Tool config (`.github/copilot-instructions.md`, `.cursorrules`, `CLAUDE.md`, or equivalent)
 
@@ -35,7 +35,7 @@ Score each dimension from `0` (failed) to `5` (strong), with evidence.
 2. Core rule quality (concise, universal, tool-agnostic)
 3. Safety coverage (honesty, stop-the-line, verification, security, pattern discovery)
 4. Editability (user can modify directly, no regen dependency)
-5. Extension readiness (KB + skills/workflows starter quality)
+5. Extension readiness (KB + skills/workflows quality)
 6. Clarity (easy for a developer to understand what to do next)
 
 ---

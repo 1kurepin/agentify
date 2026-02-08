@@ -80,7 +80,7 @@ The agent will ask:
 2. **One-sentence description** — e.g., "REST API for mobile application"
 3. **AI tool** — Which tool are you using? (Copilot/Cursor/Claude/Other; choose `Other` for Codex, Windsurf, and unlisted tools)
 
-The constraints list is captured later in Layer 2 (`docs/constraints.md`) via `.agentify/questionnaires/kb-builder.md`.
+KB files are created or updated later via `.agentify/questionnaires/kb-builder.md` or `.agentify/bootstrap-prompts/repo-scan.prompt.md`.
 
 #### Step 4: Verify output
 
@@ -171,12 +171,14 @@ The agent should now:
 Run .agentify/questionnaires/kb-builder.md
 ```
 
-This creates:
+This creates or updates:
 - `docs/project_context.md` — Project overview
 - `docs/glossary.md` — Project terminology
 - `docs/domain.md` — Business entities and rules
 - `docs/architecture.md` — System overview
 - `docs/constraints.md` — Project rules
+
+It can also suggest project-specific rules for `AGENTS.md` and apply them only after your approval.
 
 ### When to add Layer 3 (Skills & Workflows)
 
@@ -203,7 +205,7 @@ Run .agentify/bootstrap-prompts/repo-scan.prompt.md
 
 ## Folder Structure Explained
 
-After full setup (example shows **GitHub Copilot** paths):
+After setup + KB build (example shows **GitHub Copilot** paths):
 
 ```
 your-project/

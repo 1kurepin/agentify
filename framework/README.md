@@ -38,7 +38,7 @@ Run .agentify/setup.prompt.md
 - One-sentence description?
 - Which AI tool? (Copilot/Cursor/Claude/Other)
 
-Constraints are added later as a list in KB (`docs/constraints.md`) via `.agentify/questionnaires/kb-builder.md`.
+KB files are created or updated later via `.agentify/questionnaires/kb-builder.md` or `.agentify/bootstrap-prompts/repo-scan.prompt.md`.
 
 ### 4. Done
 
@@ -104,11 +104,11 @@ After setup, optionally build Knowledge Base:
 
 ### Option A: Questionnaire
 
-Run `.agentify/questionnaires/kb-builder.md` — answer questions to create glossary, architecture, constraints.
+Run `.agentify/questionnaires/kb-builder.md` — answer questions to create or update KB files and optionally apply project-specific rules to `AGENTS.md`.
 
 ### Option B: Auto-scan
 
-Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` — agent scans your repo and generates drafts.
+Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` — agent scans your repo, generates drafts, then (after approval) creates/updates KB files and optionally applies project-specific rules to `AGENTS.md`.
 
 ### Option C: Skills & Workflows
 

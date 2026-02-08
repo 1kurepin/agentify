@@ -6,7 +6,14 @@
 
 ## Instructions for Agent
 
-This questionnaire helps build the Knowledge Base for the project. Ask questions one section at a time, wait for answers, then create the corresponding files.
+This questionnaire helps build the Knowledge Base for the project. Ask questions one section at a time, wait for answers, then create or update the corresponding files.
+
+### File Update Policy
+
+For each KB file:
+- If file doesn't exist, create it
+- If file exists, update sections with new confirmed information
+- Don't duplicate headings or append conflicting versions of the same section
 
 ---
 
@@ -23,7 +30,7 @@ Let's build your Knowledge Base. First, the big picture:
 3. **What this project is NOT?** (scope boundaries, what's handled elsewhere)
 ```
 
-After answer, create `docs/project_context.md`:
+After answer, create or update `docs/project_context.md`:
 
 ```markdown
 # Project Context
@@ -62,7 +69,7 @@ Now, terminology:
    (e.g., "We use 'svc' suffix for services", "BE = backend, FE = frontend")
 ```
 
-After answer, create `docs/glossary.md`:
+After answer, create or update `docs/glossary.md`:
 
 ```markdown
 # Glossary
@@ -98,7 +105,7 @@ Now, business domain:
    (e.g., "Order total must match sum of items", "User must verify email before ordering")
 ```
 
-After answer, create `docs/domain.md`:
+After answer, create or update `docs/domain.md`:
 
 ```markdown
 # Domain
@@ -136,7 +143,7 @@ Now, architecture:
    (databases, APIs, third-party services)
 ```
 
-After answer, create `docs/architecture.md`:
+After answer, create or update `docs/architecture.md`:
 
 ```markdown
 # Architecture
@@ -172,7 +179,7 @@ Now, constraints:
    (architectural decisions that affect coding)
 ```
 
-After answer, create `docs/constraints.md`:
+After answer, create or update `docs/constraints.md`:
 
 ```markdown
 # Constraints
@@ -207,19 +214,46 @@ If "yes" → run `.agentify/questionnaires/skills-builder.md`
 
 ---
 
+## Section 7: Project-Specific Rules (Optional, Final Step)
+
+After prior sections are complete, derive up to 3 candidate rules from confirmed information only:
+- Constraints from Section 5
+- Business/domain rules from Section 3
+- Scope boundaries from Section 1
+
+Do not invent rules. If no strong candidates exist, skip this section.
+
+Ask user:
+```
+Suggested project-specific rules for AGENTS.md:
+1. ...
+2. ...
+
+Apply these rules? (yes / edit / no)
+```
+
+- `yes` → update `AGENTS.md` section `### Project-Specific Rules` with suggested list
+- `edit` → update `AGENTS.md` with user-edited list
+- `no` → keep `AGENTS.md` unchanged
+
+---
+
 ## Completion
 
 After all sections:
 
 ```markdown
-## ✅ Knowledge Base Created
+## ✅ Knowledge Base Updated
 
-**Files created:**
+**Files created/updated:**
 - `docs/project_context.md` — Project overview
 - `docs/glossary.md` — Terminology
 - `docs/domain.md` — Business entities and rules
 - `docs/architecture.md` — System components
 - `docs/constraints.md` — Critical rules
+
+**Optional (if approved):**
+- `AGENTS.md` — Project-Specific Rules updated
 
 **Optional next:**
 - Add skills to your skills folder

@@ -12,16 +12,14 @@ You are installing Agentify. Follow these steps exactly.
 
 ## Step 1: Ask Questions
 
-Ask the user these 4 questions (one message):
+Ask the user these 3 questions (one message):
 
 ```
 I'll set up agent rules for your project. Quick questions:
 
 1. **Project name?** (e.g., "MyApp Backend")
 2. **One-sentence description?** (e.g., "REST API for mobile app")
-3. **Main constraint?** What's the ONE rule that should never be broken?
-   (e.g., "Don't break the API contract", "No PII in logs", or "N/A" if none)
-4. **Which AI tool do you use?** (Copilot / Cursor / Claude / Other; choose Other for Codex, Windsurf, and unlisted tools)
+3. **Which AI tool do you use?** (Copilot / Cursor / Claude / Other; choose Other for Codex, Windsurf, and unlisted tools)
 ```
 
 Wait for answers before proceeding.
@@ -51,15 +49,19 @@ Read `.agentify/AGENTS.template.md`
 
 Create `AGENTS.md` in project root by replacing placeholders in the template:
 
-| Placeholder | Value |
-|-------------|-------|
-| `{{PROJECT_NAME}}` | User's answer to Q1 |
-| `{{PROJECT_DESCRIPTION}}` | User's answer to Q2 |
-| `{{MAIN_CONSTRAINT}}` | User's answer to Q3 |
-| `{{KB_PATH}}` | `./docs` |
-| `{{SKILLS_PATH}}` | Path from Step 2 |
-| `{{WORKFLOWS_PATH}}` | Path from Step 2 |
-| `{{PROJECT_RULES}}` | `(none yet — add as needed)` |
+- `{{PROJECT_NAME}}` → User's answer to Q1
+- `{{PROJECT_DESCRIPTION}}` → User's answer to Q2
+- `{{KB_PATH}}` → `./docs`
+- `{{SKILLS_PATH}}` → Path from Step 2
+- `{{WORKFLOWS_PATH}}` → Path from Step 2
+- `{{PROJECT_RULES}}` → Use this starter block:
+
+```markdown
+(none yet — add as needed)
+
+Example format:
+- {{PROJECT_RULE}}
+```
 
 ---
 
@@ -76,7 +78,7 @@ Create `docs/README.md`:
 
 Project documentation for AI agents.
 
-## Files to Create
+## Files to Create or Update
 
 - `project_context.md` — Project overview (start here)
 - `glossary.md` — Project terminology
@@ -84,7 +86,13 @@ Project documentation for AI agents.
 - `architecture.md` — System structure
 - `constraints.md` — Critical project rules
 
-Run `.agentify/questionnaires/kb-builder.md` to create these files.
+Start with `.agentify/bootstrap-prompts/repo-scan.prompt.md` to generate KB drafts.
+After draft review, run `.agentify/questionnaires/kb-builder.md` to refine or complete KB files.
+
+## Maintenance
+
+After architecture/domain/constraints/contract changes, check KB impact and update affected files in `docs/`.
+Draft files in `temp/kb-drafts/` are intermediate review artifacts from repo-scan; publish their content to `docs/` only after explicit approval.
 ```
 
 ---
@@ -112,16 +120,31 @@ Based on AI tool from Step 1, create appropriate config:
 **Copilot** → `.github/copilot-instructions.md`:
 ```markdown
 Read [AGENTS.md](../AGENTS.md) for agent instructions.
+
+FIRST on every request: Check `.github/prompts/*.prompt.md` for `**Trigger**` phrase matches. If a workflow matches, follow it (Core Rules still apply).
+
+Execution order: trigger check (FIRST) -> AGENTS.md rules -> matched workflow -> skills.
+Priority: `AGENTS.md` > workflow > skill.
 ```
 
 **Cursor** → `.cursorrules`:
 ```markdown
 Read AGENTS.md in project root for instructions.
+
+FIRST on every request: Check `.cursor/prompts/*.prompt.md` for `**Trigger**` phrase matches. If a workflow matches, follow it (Core Rules still apply).
+
+Execution order: trigger check (FIRST) -> AGENTS.md rules -> matched workflow -> skills.
+Priority: `AGENTS.md` > workflow > skill.
 ```
 
 **Claude** → `CLAUDE.md`:
 ```markdown
 Read AGENTS.md for agent instructions.
+
+FIRST on every request: Check `.claude/prompts/*.prompt.md` for `**Trigger**` phrase matches. If a workflow matches, follow it (Core Rules still apply).
+
+Execution order: trigger check (FIRST) -> AGENTS.md rules -> matched workflow -> skills.
+Priority: `AGENTS.md` > workflow > skill.
 ```
 
 **Other** → Tell user to point their tool to `AGENTS.md` (e.g., Codex, Windsurf, or any unlisted tool).
@@ -142,15 +165,16 @@ Read AGENTS.md for agent instructions.
 
 **Ready to use:**
 - Write code → Agent follows code-quality skill
-- Review code → Run "code review" or `[workflows_path]/code-review.prompt.md`
+- Review code → Ask "Review my changes" or "Code review" to trigger `[workflows_path]/code-review.prompt.md`
+- After architecture/domain/constraints/contract changes → check KB impact and update `docs/` files if needed
 
 **Next steps (optional):**
 
-1. **Build Knowledge Base** — Run `.agentify/questionnaires/kb-builder.md` to create glossary, architecture, constraints
+1. **Auto-scan repo first** — Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` to generate KB drafts, review drafts, then create/update docs and suggest project-specific rules
 
-2. **Build more Skills & Workflows** — Run `.agentify/questionnaires/skills-builder.md` to create custom skills and workflows
+2. **Refine with KB questionnaire** — After scan + draft review, run `.agentify/questionnaires/kb-builder.md` to refine/complete KB files and suggest project-specific rules
 
-3. **Auto-scan repo** — Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` to auto-generate KB drafts
+3. **Build more Skills & Workflows** — Run `.agentify/questionnaires/skills-builder.md` to create custom skills and workflows
 
 Your agent is ready to use!
 ```

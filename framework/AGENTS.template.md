@@ -8,8 +8,14 @@
 
 | When You're... | Rule |
 |----------------|------|
+| User says "review my changes", "code review" | Check `{{WORKFLOWS_PATH}}` for matching workflow → follow it |
+| User request might match a workflow trigger | Check `**Trigger**` lines in `{{WORKFLOWS_PATH}}/*.prompt.md` FIRST |
+| Workflow matched | Follow that workflow completely (Core Rules still apply) |
 | Unsure about a fact | Mark as `TBD`, don't invent |
-| Making breaking changes | STOP → get explicit approval |
+| Making breaking/risky changes | STOP → get explicit approval |
+| Changing architecture/domain/constraints | Check KB impact; update `{{KB_PATH}}` files |
+| Starting implementation | Present plan, get approval, then execute |
+| Working on large tasks | Save plan to `temp/feature-short-name-plan-YYYY-MM-DD.md` |
 | Adding new code | Find existing patterns first, copy them |
 | Stuck after 2-3 attempts | Validate assumptions, don't force |
 | Done with a task | Verify: compiles, tests pass, no secrets |
@@ -84,6 +90,12 @@ Vague approval ("just do it") is not enough. Confirmation must reference the act
 
 **Why**: Consistent code is easier to maintain. Don't invent conventions.
 
+### 7. Knowledge Base Impact
+
+When a change affects architecture, domain behavior, constraints, or external contracts:
+- Check whether Knowledge Base files in `{{KB_PATH}}` need updates
+- Update affected files, or explicitly state why no KB update is needed
+
 ---
 
 ## Working Style
@@ -116,12 +128,29 @@ When corrected:
 
 ## Task Execution
 
-### Workflow: Clarify → Plan → Execute → Verify
+### Workflow: Clarify → Plan → Confirm → Execute → Verify
 
 1. **Clarify**: If requirements unclear, ask 1-3 targeted questions
 2. **Plan**: Break work into small, verifiable steps
-3. **Execute**: One step at a time; verify before next step
-4. **Verify**: Self-review before claiming "done"
+3. **Confirm**: Present plan, ask for agreement/comments/questions, update plan
+4. **Execute**: Start only after explicit user approval; verify before next step
+5. **Verify**: Self-review before claiming "done"
+
+### Plan Alignment (Mandatory Before Execution)
+
+Before any code changes or command execution:
+1. Present the proposed plan to the user
+2. Ask if the user agrees and if there are comments or constraints
+3. Ask targeted questions if something is still unclear
+4. Update the plan based on user feedback
+5. Wait for explicit approval, then execute
+
+### Large Task Plan File
+
+If task scope is large (many files, many steps, or multi-stage work):
+1. Create `temp/feature-short-name-plan-YYYY-MM-DD.md` before execution
+2. Include goal, scope, assumptions, and detailed step-by-step plan
+3. Use it as reference and update it as decisions change
 
 ### Small Steps
 
@@ -160,6 +189,10 @@ Signs of being stuck:
 2. Suggest user start new session with handoff file
 
 **Proactive handoff** > degraded quality. Don't wait until quality drops.
+Consider proactive handoff when:
+- Work involves 20+ tool invocations
+- You're touching 10+ files in one task
+- Session is long and decisions become hard to track
 
 ---
 
@@ -170,6 +203,8 @@ Signs of being stuck:
 - [ ] Requirements clear?
 - [ ] Breaking changes identified?
 - [ ] Approval obtained (if breaking/risky)?
+- [ ] Plan presented and approved by user?
+- [ ] Large task plan saved to `temp/feature-short-name-plan-YYYY-MM-DD.md` (if applicable)?
 
 ### Before Claiming "Done"
 
@@ -178,6 +213,7 @@ Signs of being stuck:
 - [ ] No secrets, PII, or internal URLs in code
 - [ ] No breaking changes (or explicitly approved)
 - [ ] Documentation updated (if behavior changed)
+- [ ] KB impact checked; `{{KB_PATH}}` files updated if needed
 
 ### Response Format
 
@@ -211,7 +247,7 @@ When generating exportable content, replace with placeholders:
 
 **Project**: {{PROJECT_NAME}}
 **Description**: {{PROJECT_DESCRIPTION}}
-**Main Constraint**: {{MAIN_CONSTRAINT}}
+**Constraints**: Keep the full list in `{{KB_PATH}}/constraints.md`.
 
 ### Knowledge Base
 
@@ -222,10 +258,38 @@ Project-specific knowledge in `{{KB_PATH}}`:
 - `architecture.md` — System overview
 - `constraints.md` — Project rules and invariants
 
+Read KB files before implementation when:
+- It's your first time working in a feature area
+- A domain term or rule is unclear
+- Changes affect architecture, constraints, or external contracts
+- The request depends on project-specific behavior
+
 ### Skills & Workflows
 
-- Skills: `{{SKILLS_PATH}}`
-- Workflows: `{{WORKFLOWS_PATH}}`
+- **Workflows**: `{{WORKFLOWS_PATH}}`
+- **Skills**: `{{SKILLS_PATH}}`
+
+**Trigger check (FIRST on every request):**
+1. List files in `{{WORKFLOWS_PATH}}`
+2. Check `**Trigger**` line in each file for phrase match with user request
+3. Match found → read and follow that workflow (Core Rules still apply)
+4. No match → proceed normally
+
+**Execution order**: trigger check → general rules → matched workflow (if any) → skills (if relevant)
+**Conflict priority**: general rules > workflow > skill
+
+---
+
+## Common Mistakes
+
+| ❌ DON'T | ✅ DO |
+|----------|------|
+| Start working before checking workflow triggers | Check `{{WORKFLOWS_PATH}}` for trigger match FIRST |
+| Use generic approach when workflow exists | Follow matched workflow completely |
+| Invent facts when context is unclear | Use `TBD` placeholders and ask questions |
+| Proceed with breaking changes after vague approval | Require explicit confirmation of specific change |
+| Skip KB updates after significant changes | Run KB impact check, update `{{KB_PATH}}` files |
+| Keep forcing failed approach past 2-3 iterations | STOP, validate assumptions, try fresh approach |
 
 ### Project-Specific Rules
 

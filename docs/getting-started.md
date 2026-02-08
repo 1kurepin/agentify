@@ -78,8 +78,9 @@ The agent will ask:
 
 1. **Project name** — e.g., "MyApp Backend"
 2. **One-sentence description** — e.g., "REST API for mobile application"
-3. **Main constraint** — What should never be broken? e.g., "API backward compatibility"
-4. **AI tool** — Which tool are you using? (Copilot/Cursor/Claude/Other; choose `Other` for Codex, Windsurf, and unlisted tools)
+3. **AI tool** — Which tool are you using? (Copilot/Cursor/Claude/Other; choose `Other` for Codex, Windsurf, and unlisted tools)
+
+KB files are created or updated later via `.agentify/questionnaires/kb-builder.md` or `.agentify/bootstrap-prompts/repo-scan.prompt.md`.
 
 #### Step 4: Verify output
 
@@ -103,11 +104,11 @@ If agent-driven setup doesn't work, you can set up manually:
 cp .agentify/AGENTS.template.md AGENTS.md
 ```
 
-#### Step 2: Replace placeholders in AGENTS.md
+#### Step 2: Fill required values in AGENTS.md
 
 - `{{PROJECT_NAME}}` → Your project name (e.g., "MyApp Backend")
 - `{{PROJECT_DESCRIPTION}}` → One sentence (e.g., "REST API for mobile application")
-- `{{MAIN_CONSTRAINT}}` → What should never be broken (e.g., "API backward compatibility")
+- Keep constraints as a list in `docs/constraints.md`
 
 #### Step 3: Create folder structure
 
@@ -129,6 +130,11 @@ Use the config format that matches your tool:
 | Cursor | `.cursorrules` with: `Read AGENTS.md in project root for instructions.` |
 | Claude Code | `CLAUDE.md` with: `Read AGENTS.md for agent instructions.` |
 | Codex / Windsurf / Other | Point your tool to `AGENTS.md` in project root |
+
+Include workflow activation order in tool config:
+- Before generic actions, check prompts folder workflow `**Trigger**` phrases against user request
+- If matched, read and execute that workflow first
+- Then load relevant skills
 
 ---
 
@@ -170,12 +176,17 @@ The agent should now:
 Run .agentify/questionnaires/kb-builder.md
 ```
 
-This creates:
+This creates or updates:
 - `docs/project_context.md` — Project overview
 - `docs/glossary.md` — Project terminology
 - `docs/domain.md` — Business entities and rules
 - `docs/architecture.md` — System overview
 - `docs/constraints.md` — Project rules
+
+It can also suggest project-specific rules for `AGENTS.md` and apply them only after your approval.
+
+**Ongoing maintenance default:** after architecture/domain/constraints/contract changes, check KB impact and update affected files in `docs/`.
+The default `code-review` workflow includes a required `KB Impact` result (`none` or updated files).
 
 ### When to add Layer 3 (Skills & Workflows)
 
@@ -190,9 +201,16 @@ This creates:
 Run .agentify/questionnaires/skills-builder.md
 ```
 
+This flow:
+- Reads KB context from `docs/project_context.md`, `docs/domain.md`, `docs/constraints.md`, `docs/architecture.md`, and `docs/glossary.md` (if present)
+- Combines KB with your answers to draft skills/workflows
+- Uses create-or-update behavior for existing files
+- Requires explicit confirmation before writes: `yes / edit / no`
+- Uses naming: `*.skill.md` for skills, `*.prompt.md` for workflows
+
 ### Alternative: Auto-scan Repository
 
-Let the agent analyze your codebase and draft KB/Skills:
+Let the agent analyze your codebase and draft KB:
 
 ```
 Run .agentify/bootstrap-prompts/repo-scan.prompt.md
@@ -202,7 +220,7 @@ Run .agentify/bootstrap-prompts/repo-scan.prompt.md
 
 ## Folder Structure Explained
 
-After full setup (example shows **GitHub Copilot** paths):
+After setup + KB build (example shows **GitHub Copilot** paths):
 
 ```
 your-project/
@@ -255,11 +273,11 @@ Open `AGENTS.md` and edit the "Project-Specific Rules" section:
 
 ### Add Skills
 
-Copy from `.agentify/templates/skills/` to your skills folder.
+Copy `.agentify/templates/skills/skill.template.md` to your skills folder and save as `[name].skill.md`.
 
 ### Add Workflows
 
-Copy from `.agentify/templates/workflows/` to your prompts folder.
+Copy `.agentify/templates/workflows/workflow.template.md` to your prompts folder and save as `[name].prompt.md`.
 
 ---
 
@@ -280,7 +298,15 @@ Run setup again and choose the correct AI tool when asked.
 1. Check `AGENTS.md` exists in project root
 2. For Copilot: Verify `.github/copilot-instructions.md` points to it
 3. For Cursor: Verify `.cursorrules` mentions it
-4. Try explicitly asking: "Read AGENTS.md first, then..."
+4. Verify tool config includes workflow trigger checking before default behavior
+5. Try explicitly asking: "Read AGENTS.md, check workflow triggers, then proceed"
+
+### Workflow trigger not activating
+
+1. Check workflow file is in prompts folder and uses `*.prompt.md` naming
+2. Confirm workflow has a `**Trigger**: "phrase 1", "phrase 2"` line near top
+3. Test exact trigger phrases first (for default code review: "Review my changes", "Code review", "Review current branch")
+4. If exact phrases work but variants fail, add explicit phrase variants to `**Trigger**`
 
 ---
 

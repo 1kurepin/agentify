@@ -1,6 +1,10 @@
 # Workflow: {{WORKFLOW_NAME}}
 
 **{{Brief description of what this workflow accomplishes.}}**
+**Recommended file name**: `{{workflow-slug}}.prompt.md`
+**Trigger**: "{{phrase 1}}", "{{phrase 2}}"
+
+> **Trigger phrase tips**: Use 2-4 common phrases users naturally say. Include both imperative ("Review my code") and noun forms ("Code review"). Avoid overly specific phrases that require exact wording.
 
 ---
 
@@ -8,8 +12,6 @@
 
 - {{Trigger condition 1}}
 - {{Trigger condition 2}}
-
-**Trigger phrases**: "{{phrase 1}}", "{{phrase 2}}"
 
 ---
 

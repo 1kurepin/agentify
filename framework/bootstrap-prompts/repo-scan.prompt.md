@@ -56,55 +56,22 @@ Look for:
 
 ## Step 3: Generate Drafts
 
-Create draft files in `temp/kb-drafts/`:
+Create `temp/kb-drafts/` if it doesn't exist.
 
-### glossary.draft.md
+Use templates from `.agentify/templates/kb-drafts/` to generate draft files:
 
-```markdown
-# Glossary (Draft)
+| Template | Output |
+|----------|--------|
+| `project_context.draft.template.md` | `temp/kb-drafts/project_context.draft.md` |
+| `domain.draft.template.md` | `temp/kb-drafts/domain.draft.md` |
+| `glossary.draft.template.md` | `temp/kb-drafts/glossary.draft.md` |
+| `architecture.draft.template.md` | `temp/kb-drafts/architecture.draft.md` |
+| `constraints.draft.template.md` | `temp/kb-drafts/constraints.draft.md` |
 
-## Confirmed Terms
-| Term | Definition | Source |
-|------|------------|--------|
-| [found term] | [inferred meaning] | [file where found] |
-
-## TBD Terms (Need Clarification)
-| Term | Context | Question |
-|------|---------|----------|
-| [unclear term] | [where seen] | [what to ask] |
-```
-
-### architecture.draft.md
-
-```markdown
-# Architecture (Draft)
-
-## Overview
-[inferred from README/structure, or TBD]
-
-## Components (from directory structure)
-- [folder] — [inferred purpose]
-
-## External Dependencies (from config)
-- [dependency] — [purpose if clear, else TBD]
-
-## TBD
-- [list what couldn't be determined]
-```
-
-### constraints.draft.md
-
-```markdown
-# Constraints (Draft)
-
-## Apparent Constraints
-| Constraint | Evidence | Confidence |
-|------------|----------|------------|
-| [inferred rule] | [where found] | High/Medium/Low |
-
-## TBD
-- [constraints that likely exist but couldn't confirm]
-```
+When filling templates:
+- Keep `TBD` when evidence is insufficient
+- Include evidence/source paths for non-trivial claims
+- Keep `(Draft)` in document titles
 
 ---
 
@@ -117,6 +84,8 @@ Create draft files in `temp/kb-drafts/`:
 **Date**: [date]
 
 ## Files Created
+- temp/kb-drafts/project_context.draft.md
+- temp/kb-drafts/domain.draft.md
 - temp/kb-drafts/glossary.draft.md
 - temp/kb-drafts/architecture.draft.md
 - temp/kb-drafts/constraints.draft.md
@@ -132,7 +101,119 @@ Create draft files in `temp/kb-drafts/`:
 ## Next Steps
 1. Review draft files
 2. Answer TBD questions
-3. Copy approved content to `docs/`
+3. Create or update `docs/` with approved content
+```
+
+**Wait for user approval before proceeding to Step 5.**
+
+---
+
+## Step 5: Apply Approved KB (After User Approval)
+
+When user approves the KB drafts:
+
+### 5.1 Create or Update Files in docs/
+
+For each approved draft from `temp/kb-drafts/`, create or update matching file in `docs/`:
+- Remove `(Draft)` from titles
+- Remove `.draft` from filenames
+- Example: `glossary.draft.md` → `docs/glossary.md`
+- If target file doesn't exist, create it
+- If target file exists, update relevant sections with approved information (don't duplicate sections)
+
+### 5.2 Update docs/README.md
+
+Replace placeholder content with actual file list:
+
+```markdown
+# Knowledge Base
+
+Project documentation for AI agents.
+
+## Available Files
+
+- [project_context.md](project_context.md) — Project overview (start here)
+- [glossary.md](glossary.md) — Project terminology
+- [domain.md](domain.md) — Business entities and rules
+- [architecture.md](architecture.md) — System structure
+- [constraints.md](constraints.md) — Critical project rules
+
+## Maintenance
+
+These files were auto-generated from repository scan and then approved. Update them as the project evolves to keep agent context accurate.
+```
+
+### 5.3 Update AGENTS.md Knowledge Base Section
+
+Find the `### Knowledge Base` section in `AGENTS.md` and update it to reflect the populated KB:
+
+**Before** (placeholder):
+```markdown
+### Knowledge Base
+
+Project-specific knowledge in `./docs`:
+- `project_context.md` — Project overview (read first)
+- `glossary.md` — Project terminology
+...
+```
+
+**After** (populated):
+```markdown
+### Knowledge Base
+
+**READ THESE FILES** before working on unfamiliar code or domain concepts.
+
+Project-specific knowledge in `./docs`:
+- `project_context.md` — **Start here**: Business model, use cases, tech stack
+- `glossary.md` — Domain terminology
+- `domain.md` — Core entities, relationships, business rules
+- `architecture.md` — System components, integrations, infrastructure
+- `constraints.md` — Technical and business constraints (must follow)
+```
+
+### 5.4 Suggest Project-Specific Rules for AGENTS.md
+
+Generate up to 3 candidate project-specific rules from approved KB content:
+- `docs/constraints.md` (critical rules/invariants)
+- `docs/domain.md` (business rules)
+- `docs/project_context.md` (scope boundaries)
+
+Do not invent. If no strong candidates exist, skip this step.
+
+Ask user:
+```markdown
+Suggested project-specific rules:
+1. ...
+2. ...
+
+Apply these to AGENTS.md? (yes / edit / no)
+```
+
+- `yes` → update `AGENTS.md` section `### Project-Specific Rules`
+- `edit` → apply user-edited list
+- `no` → leave rules section unchanged
+
+### 5.5 Report Completion
+
+```markdown
+## ✅ Knowledge Base Updated
+
+**Created/updated in docs/:**
+- [list files created or updated]
+
+**Updated:**
+- docs/README.md — Index of KB files
+- AGENTS.md — KB section now references populated files
+- AGENTS.md — Project-Specific Rules (if approved)
+
+**Draft files remain in** `temp/kb-drafts/` for reference.
+
+**Optional next steps:**
+1. **Refine KB details** — Run `.agentify/questionnaires/kb-builder.md` to clarify TBD items and improve accuracy.
+2. **Add skills and workflows** — Run `.agentify/questionnaires/skills-builder.md` to create or update project-specific skills/workflows.
+3. **Skip for now** — Keep current KB as-is and continue coding.
+
+Want to run one of these now? (1 / 2 / 3)
 ```
 
 ---

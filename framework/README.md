@@ -12,7 +12,7 @@ A framework that gives AI coding agents (Copilot, Cursor, Claude, etc.) strong, 
 
 **Core value:**
 1. **Strong agent rules** (concise & focused) that work immediately
-2. **Automated setup** — one prompt, 4 questions, done
+2. **Automated setup** — one prompt, 3 questions, done
 3. **KB/Skills/Workflows** — optional extensions for deeper context
 
 **Philosophy**: Start with a solid foundation, grow as needed. Core rules → KB → Skills → complex agent systems.
@@ -32,12 +32,13 @@ Ask your AI agent:
 Run .agentify/setup.prompt.md
 ```
 
-### 3. Answer 4 questions
+### 3. Answer 3 questions
 
 - Project name?
 - One-sentence description?
-- Main constraint? (what should never be broken)
 - Which AI tool? (Copilot/Cursor/Claude/Other)
+
+Start with `.agentify/bootstrap-prompts/repo-scan.prompt.md` to generate KB drafts, then use `.agentify/questionnaires/kb-builder.md` after draft review to refine or complete KB files.
 
 ### 4. Done
 
@@ -101,17 +102,20 @@ Start with Layer 1. Add more layers as your project needs grow.
 
 After setup, optionally build Knowledge Base:
 
-### Option A: Questionnaire
+### Option A: Auto-scan (recommended first)
 
-Run `.agentify/questionnaires/kb-builder.md` — answer questions to create glossary, architecture, constraints.
+Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` — agent scans your repo, generates drafts, then (after approval) creates/updates KB files and optionally applies project-specific rules to `AGENTS.md`.
+Drafts are saved in `temp/kb-drafts/` as review artifacts; keep them for reference and publish to `docs/` only after approval.
 
-### Option B: Auto-scan
+### Option B: Questionnaire (after draft review)
 
-Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` — agent scans your repo and generates drafts.
+Run `.agentify/questionnaires/kb-builder.md` — answer questions to refine or complete KB files and optionally apply project-specific rules to `AGENTS.md`.
 
 ### Option C: Skills & Workflows
 
-Run `.agentify/questionnaires/skills-builder.md` — create custom skills (specialized knowledge) and workflows (repeatable processes).
+Run `.agentify/questionnaires/skills-builder.md` — agent reads KB files in `docs/` plus your answers, prepares create-or-update changes from templates, then asks `yes / edit / no` before writing skills (`*.skill.md`) and workflows (`*.prompt.md`).
+
+**Ongoing maintenance default**: after architecture/domain/constraints/contract changes, check KB impact and update affected files in `docs/`.
 
 ---
 
@@ -124,20 +128,30 @@ Run `.agentify/questionnaires/skills-builder.md` — create custom skills (speci
 ├── setup.prompt.md        # One-prompt installation
 ├── questionnaires/        # KB building questionnaires
 ├── bootstrap-prompts/     # Auto-generation prompts
-└── templates/             # KB, skills, workflow templates
+└── templates/             # KB, KB-draft, skills, workflow templates
 ```
 
 ---
 
 ## Adding Skills & Workflows
 
+Use `.agentify/questionnaires/skills-builder.md` for KB-aware create-or-update flow with explicit confirmation (`yes / edit / no`) before writes.
+
+Manual option:
+
 **Skills** — teach agent specific expertise:
-1. Copy from `.agentify/templates/skills/`
-2. Save to your tool's skills folder (e.g., `.github/skills/` for Copilot, `.cursor/skills/` for Cursor)
+1. Copy `.agentify/templates/skills/skill.template.md`
+2. Save as `[name].skill.md` in your tool's skills folder (e.g., `.github/skills/` for Copilot, `.cursor/skills/` for Cursor)
 
 **Workflows** — repeatable procedures:
-1. Copy from `.agentify/templates/workflows/`
-2. Save to your tool's prompts folder (e.g., `.github/prompts/` for Copilot, `.cursor/prompts/` for Cursor)
+1. Copy `.agentify/templates/workflows/workflow.template.md`
+2. Save as `[name].prompt.md` in your tool's prompts folder (e.g., `.github/prompts/` for Copilot, `.cursor/prompts/` for Cursor)
+
+Use `**When to load**` and `**Trigger phrases**` in each skill file.
+Use a `**Trigger**: "phrase 1", "phrase 2"` line in each workflow file.
+Before default behavior, compare the user request with workflow `**Trigger**` phrases in your prompts folder.
+Execution order: general rules in `AGENTS.md` -> workflow trigger check -> matched workflow (if any) -> relevant skills (if relevant).
+If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
 
 ---
 

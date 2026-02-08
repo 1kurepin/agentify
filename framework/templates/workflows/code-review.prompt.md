@@ -115,6 +115,12 @@ For each file/group, verify against:
 - [ ] Can it be debugged when it fails?
 - [ ] Is it easy to modify in the future?
 
+### H. Knowledge Base Impact (Required)
+
+- [ ] KB impact assessed for architecture/domain/constraints/contract changes
+- [ ] If impacted, KB files in `docs/` are updated (`project_context.md`, `glossary.md`, `domain.md`, `architecture.md`, `constraints.md`)
+- [ ] Report includes `KB Impact: none` or lists updated KB files
+
 ---
 
 ## Phase 3: Common Issues Check
@@ -142,6 +148,7 @@ Structure your findings:
 ## Code Review: [branch-name]
 
 **Scope**: X files, ~Y lines changed (from [base-branch])
+**KB Impact**: none / [updated files]
 
 ### Critical Issues (Must Fix)
 
@@ -186,7 +193,8 @@ Optional improvements:
 4. **Get actual diffs** — `git diff <merge-base>...HEAD -- <file>`
 5. **Decompose if large** — group logically
 6. **Review systematically** — all criteria, all files
-7. **Report clearly** — structured findings with file:line references
+7. **Check KB impact** — update KB files if needed or mark `KB Impact: none`
+8. **Report clearly** — structured findings with file:line references
 
 **Take your time:**
 - Think about implications

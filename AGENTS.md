@@ -18,6 +18,8 @@
 |----------------|------|
 | Changing framework output | Verify it stays short, universal, tool-agnostic |
 | Adding examples | Use `{{PLACEHOLDER}}` for project-specific values |
+| Starting implementation | Present a plan first, get user approval, then execute |
+| Working on large tasks | Save detailed plan to `temp/feature-short-name-plan-YYYY-MM-DD.md` |
 | Adding features | Consider: does this add complexity? Is it worth it? |
 | Unsure about something | Mark as `TBD`, don't invent |
 
@@ -71,6 +73,20 @@ Users edit `AGENTS.md` directly after generation. They own it completely.
 - Create dependencies between generated files
 - Add configuration or lock files
 
+### 5. Plan Agreement First (Mandatory)
+
+Before any edits or command execution:
+- Present a concrete plan to the user
+- Ask whether the user agrees, plus comments/questions/constraints
+- Adjust the plan from feedback
+- Execute only after explicit user approval
+
+For large tasks (many files, many steps, or multi-stage work):
+- Create `temp/feature-short-name-plan-YYYY-MM-DD.md` before execution
+- Include goal, scope, assumptions, and detailed step-by-step actions
+- Keep this file as the reference point while executing
+- Example: `temp/auth-session-hardening-plan-2026-02-08.md`
+
 ---
 
 ## File Ownership
@@ -93,6 +109,8 @@ Before merging changes:
 - [ ] Works with all supported tools
 - [ ] Documentation updated
 - [ ] Examples use placeholders
+- [ ] Plan was presented and approved before execution
+- [ ] Large tasks have `temp/feature-short-name-plan-YYYY-MM-DD.md` (if applicable)
 
 ---
 

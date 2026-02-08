@@ -8,15 +8,14 @@
 
 | When You're... | Rule |
 |----------------|------|
-| Any task | Apply the general rules in this file first; keep them active throughout |
-| Before default behavior | Check workflow files in `{{WORKFLOWS_PATH}}` for a `**Trigger**` phrase match with the user request |
-| User request matches a workflow trigger | Read the matching workflow file first and follow it before generic actions |
-| User request matches a skill trigger/topic | After general rules and active workflow, load relevant skills from `{{SKILLS_PATH}}` |
+| User says "review my changes", "code review" | Check `{{WORKFLOWS_PATH}}` for matching workflow → follow it |
+| User request might match a workflow trigger | Check `**Trigger**` lines in `{{WORKFLOWS_PATH}}/*.prompt.md` FIRST |
+| Workflow matched | Follow that workflow completely (Core Rules still apply) |
 | Unsure about a fact | Mark as `TBD`, don't invent |
-| Making breaking changes | STOP → get explicit approval |
-| Changing architecture/domain/constraints | Check KB impact; update affected files in `{{KB_PATH}}` |
-| Starting implementation | Share plan first, get user approval, then execute |
-| Working on large tasks | Save detailed plan in `temp/feature-short-name-plan-YYYY-MM-DD.md` |
+| Making breaking/risky changes | STOP → get explicit approval |
+| Changing architecture/domain/constraints | Check KB impact; update `{{KB_PATH}}` files |
+| Starting implementation | Present plan, get approval, then execute |
+| Working on large tasks | Save plan to `temp/feature-short-name-plan-YYYY-MM-DD.md` |
 | Adding new code | Find existing patterns first, copy them |
 | Stuck after 2-3 attempts | Validate assumptions, don't force |
 | Done with a task | Verify: compiles, tests pass, no secrets |
@@ -267,11 +266,30 @@ Read KB files before implementation when:
 
 ### Skills & Workflows
 
-- Workflows: `{{WORKFLOWS_PATH}}` (before default behavior, check `**Trigger**` phrase matches with the user request)
-- If a workflow matches: read it first and execute it before generic actions
-- Skills: `{{SKILLS_PATH}}` (load after active workflow when request matches a skill trigger phrase or topic)
-- Execution order: general rules in this file → workflow trigger check → matched workflow (if any) → skills (if relevant)
-- Conflict priority: general rules > workflow > skill
+- **Workflows**: `{{WORKFLOWS_PATH}}`
+- **Skills**: `{{SKILLS_PATH}}`
+
+**Trigger check (FIRST on every request):**
+1. List files in `{{WORKFLOWS_PATH}}`
+2. Check `**Trigger**` line in each file for phrase match with user request
+3. Match found → read and follow that workflow (Core Rules still apply)
+4. No match → proceed normally
+
+**Execution order**: trigger check → general rules → matched workflow (if any) → skills (if relevant)
+**Conflict priority**: general rules > workflow > skill
+
+---
+
+## Common Mistakes
+
+| ❌ DON'T | ✅ DO |
+|----------|------|
+| Start working before checking workflow triggers | Check `{{WORKFLOWS_PATH}}` for trigger match FIRST |
+| Use generic approach when workflow exists | Follow matched workflow completely |
+| Invent facts when context is unclear | Use `TBD` placeholders and ask questions |
+| Proceed with breaking changes after vague approval | Require explicit confirmation of specific change |
+| Skip KB updates after significant changes | Run KB impact check, update `{{KB_PATH}}` files |
+| Keep forcing failed approach past 2-3 iterations | STOP, validate assumptions, try fresh approach |
 
 ### Project-Specific Rules
 

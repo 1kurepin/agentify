@@ -120,28 +120,31 @@ Based on AI tool from Step 1, create appropriate config:
 **Copilot** → `.github/copilot-instructions.md`:
 ```markdown
 Read [AGENTS.md](../AGENTS.md) for agent instructions.
-Before default behavior, check `.github/prompts/*.prompt.md` for a `**Trigger**` phrase match with the user request.
-If a workflow matches, read that workflow file first and follow it before loading skills or running generic actions.
-Apply this order: general rules in `AGENTS.md` -> matched workflow in `.github/prompts/` -> relevant skills in `.github/skills/` (if relevant).
-If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
+
+FIRST on every request: Check `.github/prompts/*.prompt.md` for `**Trigger**` phrase matches. If a workflow matches, follow it (Core Rules still apply).
+
+Execution order: trigger check (FIRST) -> AGENTS.md rules -> matched workflow -> skills.
+Priority: `AGENTS.md` > workflow > skill.
 ```
 
 **Cursor** → `.cursorrules`:
 ```markdown
 Read AGENTS.md in project root for instructions.
-Before default behavior, check `.cursor/prompts/*.prompt.md` for a `**Trigger**` phrase match with the user request.
-If a workflow matches, read that workflow file first and follow it before loading skills or running generic actions.
-Apply this order: general rules in `AGENTS.md` -> matched workflow in `.cursor/prompts/` -> relevant skills in `.cursor/skills/` (if relevant).
-If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
+
+FIRST on every request: Check `.cursor/prompts/*.prompt.md` for `**Trigger**` phrase matches. If a workflow matches, follow it (Core Rules still apply).
+
+Execution order: trigger check (FIRST) -> AGENTS.md rules -> matched workflow -> skills.
+Priority: `AGENTS.md` > workflow > skill.
 ```
 
 **Claude** → `CLAUDE.md`:
 ```markdown
 Read AGENTS.md for agent instructions.
-Before default behavior, check `.claude/prompts/*.prompt.md` for a `**Trigger**` phrase match with the user request.
-If a workflow matches, read that workflow file first and follow it before loading skills or running generic actions.
-Apply this order: general rules in `AGENTS.md` -> matched workflow in `.claude/prompts/` -> relevant skills in `.claude/skills/` (if relevant).
-If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
+
+FIRST on every request: Check `.claude/prompts/*.prompt.md` for `**Trigger**` phrase matches. If a workflow matches, follow it (Core Rules still apply).
+
+Execution order: trigger check (FIRST) -> AGENTS.md rules -> matched workflow -> skills.
+Priority: `AGENTS.md` > workflow > skill.
 ```
 
 **Other** → Tell user to point their tool to `AGENTS.md` (e.g., Codex, Windsurf, or any unlisted tool).

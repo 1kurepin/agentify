@@ -92,6 +92,7 @@ After draft review, run `.agentify/questionnaires/kb-builder.md` to refine or co
 ## Maintenance
 
 After architecture/domain/constraints/contract changes, check KB impact and update affected files in `docs/`.
+Draft files in `temp/kb-drafts/` are intermediate review artifacts from repo-scan; publish their content to `docs/` only after explicit approval.
 ```
 
 ---

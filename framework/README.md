@@ -105,6 +105,7 @@ After setup, optionally build Knowledge Base:
 ### Option A: Auto-scan (recommended first)
 
 Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` — agent scans your repo, generates drafts, then (after approval) creates/updates KB files and optionally applies project-specific rules to `AGENTS.md`.
+Drafts are saved in `temp/kb-drafts/` as review artifacts; keep them for reference and publish to `docs/` only after approval.
 
 ### Option B: Questionnaire (after draft review)
 

@@ -189,6 +189,10 @@ Signs of being stuck:
 2. Suggest user start new session with handoff file
 
 **Proactive handoff** > degraded quality. Don't wait until quality drops.
+Consider proactive handoff when:
+- Work involves 20+ tool invocations
+- You're touching 10+ files in one task
+- Session is long and decisions become hard to track
 
 ---
 
@@ -253,6 +257,12 @@ Project-specific knowledge in `{{KB_PATH}}`:
 - `domain.md` — Business entities and rules
 - `architecture.md` — System overview
 - `constraints.md` — Project rules and invariants
+
+Read KB files before implementation when:
+- It's your first time working in a feature area
+- A domain term or rule is unclear
+- Changes affect architecture, constraints, or external contracts
+- The request depends on project-specific behavior
 
 ### Skills & Workflows
 

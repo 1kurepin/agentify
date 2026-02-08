@@ -20,6 +20,7 @@ Use evidence from files. Do not guess. Mark unknowns as `TBD`.
 ## Step 1: Collect Evidence
 
 Inspect the project and mark each item as `Present`, `Missing`, or `TBD`.
+Record this as an explicit table in the report (`Evidence Status` section). Do not leave item status implicit in prose.
 
 ### Baseline setup outputs (required)
 
@@ -44,6 +45,7 @@ Interpretation rules:
 - Missing KB files are **not** a setup failure by themselves.
 - If project-specific rules were updated, verify they are concrete and plausibly sourced from KB/answers.
 - If approval evidence is unavailable, mark as `TBD`, do not invent.
+- If it is unclear whether an optional flow was run, mark related optional items as `TBD` and explain briefly.
 
 If `AGENTS.md` is missing, stop and report a critical failure.
 
@@ -59,6 +61,12 @@ Score each dimension from `0` (failed) to `5` (strong), with evidence.
 4. User control (editable output, no regen dependency, approval gating for project-specific rules)
 5. Extension flow integrity (`kb-builder`/`repo-scan` create-or-update behavior)
 6. Documentation consistency (prompts and docs agree on expected flow)
+
+Confidence calibration:
+- `High`: Baseline required outputs verified with file evidence, and no unresolved `TBD` materially affects scores.
+- `Medium`: Baseline required outputs verified, but unresolved `TBD` remains (for approvals or optional flows), or some scores rely on inference.
+- `Low`: Missing critical evidence, or multiple unresolved `TBD` items materially affect scoring confidence.
+- If approval evidence for project-specific rules is `TBD`, do not score `User control` above `4` unless an equivalent approval gate is explicitly documented and verified in files.
 
 ---
 
@@ -118,6 +126,22 @@ Do not skip file creation. The evaluation is complete only after the markdown fi
 ## Verdict
 - Overall: Strong / Medium / Weak
 - Confidence: High / Medium / Low
+
+## Evidence Status (Step 1)
+| Item | Status (Present/Missing/TBD) | Evidence |
+|------|-------------------------------|----------|
+| AGENTS.md | X | [file/path + note] |
+| docs/ folder | X | [file/path + note] |
+| docs/README.md | X | [file/path + note] |
+| Skills/workflows folders | X | [file/path + note] |
+| Tool config file | X | [file/path + note] |
+| docs/project_context.md (optional) | X | [file/path + note or TBD] |
+| docs/glossary.md (optional) | X | [file/path + note or TBD] |
+| docs/domain.md (optional) | X | [file/path + note or TBD] |
+| docs/architecture.md (optional) | X | [file/path + note or TBD] |
+| docs/constraints.md (optional) | X | [file/path + note or TBD] |
+| temp/kb-drafts/ (optional) | X | [file/path + note or TBD] |
+| AGENTS.md Project-Specific Rules updated from starter block (optional) | X | [file/path + note or TBD] |
 
 ## Scorecard
 | Dimension | Score (0-5) | Evidence |

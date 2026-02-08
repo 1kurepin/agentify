@@ -8,7 +8,7 @@ Before contributing, understand our core principles:
 
 1. **Foundation first** — Short, focused rules that agents internalize, not walls of text they ignore
 2. **Universal core** — Rules must work for any project type
-3. **Safe defaults** — Err on the side of caution over "helpful at all costs"
+3. **Safe defaults** — Choose caution and accuracy over "helpful at all costs"
 
 ## What We're Looking For
 

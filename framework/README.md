@@ -12,7 +12,7 @@ A framework that gives AI coding agents (Copilot, Cursor, Claude, etc.) strong, 
 
 **Core value:**
 1. **Strong agent rules** (concise & focused) that work immediately
-2. **Automated setup** — one prompt, 4 questions, done
+2. **Automated setup** — one prompt, 3 questions, done
 3. **KB/Skills/Workflows** — optional extensions for deeper context
 
 **Philosophy**: Start with a solid foundation, grow as needed. Core rules → KB → Skills → complex agent systems.
@@ -32,12 +32,13 @@ Ask your AI agent:
 Run .agentify/setup.prompt.md
 ```
 
-### 3. Answer 4 questions
+### 3. Answer 3 questions
 
 - Project name?
 - One-sentence description?
-- Main constraint? (what should never be broken)
 - Which AI tool? (Copilot/Cursor/Claude/Other)
+
+Constraints are added later as a list in KB (`docs/constraints.md`) via `.agentify/questionnaires/kb-builder.md`.
 
 ### 4. Done
 

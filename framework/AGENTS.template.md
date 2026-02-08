@@ -211,7 +211,7 @@ When generating exportable content, replace with placeholders:
 
 **Project**: {{PROJECT_NAME}}
 **Description**: {{PROJECT_DESCRIPTION}}
-**Main Constraint**: {{MAIN_CONSTRAINT}}
+**Constraints**: Keep the full list in `{{KB_PATH}}/constraints.md`.
 
 ### Knowledge Base
 

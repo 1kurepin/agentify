@@ -12,16 +12,14 @@ You are installing Agentify. Follow these steps exactly.
 
 ## Step 1: Ask Questions
 
-Ask the user these 4 questions (one message):
+Ask the user these 3 questions (one message):
 
 ```
 I'll set up agent rules for your project. Quick questions:
 
 1. **Project name?** (e.g., "MyApp Backend")
 2. **One-sentence description?** (e.g., "REST API for mobile app")
-3. **Main constraint?** What's the ONE rule that should never be broken?
-   (e.g., "Don't break the API contract", "No PII in logs", or "N/A" if none)
-4. **Which AI tool do you use?** (Copilot / Cursor / Claude / Other; choose Other for Codex, Windsurf, and unlisted tools)
+3. **Which AI tool do you use?** (Copilot / Cursor / Claude / Other; choose Other for Codex, Windsurf, and unlisted tools)
 ```
 
 Wait for answers before proceeding.
@@ -55,7 +53,6 @@ Create `AGENTS.md` in project root by replacing placeholders in the template:
 |-------------|-------|
 | `{{PROJECT_NAME}}` | User's answer to Q1 |
 | `{{PROJECT_DESCRIPTION}}` | User's answer to Q2 |
-| `{{MAIN_CONSTRAINT}}` | User's answer to Q3 |
 | `{{KB_PATH}}` | `./docs` |
 | `{{SKILLS_PATH}}` | Path from Step 2 |
 | `{{WORKFLOWS_PATH}}` | Path from Step 2 |

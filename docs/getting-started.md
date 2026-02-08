@@ -78,8 +78,9 @@ The agent will ask:
 
 1. **Project name** — e.g., "MyApp Backend"
 2. **One-sentence description** — e.g., "REST API for mobile application"
-3. **Main constraint** — What should never be broken? e.g., "API backward compatibility"
-4. **AI tool** — Which tool are you using? (Copilot/Cursor/Claude/Other; choose `Other` for Codex, Windsurf, and unlisted tools)
+3. **AI tool** — Which tool are you using? (Copilot/Cursor/Claude/Other; choose `Other` for Codex, Windsurf, and unlisted tools)
+
+The constraints list is captured later in Layer 2 (`docs/constraints.md`) via `.agentify/questionnaires/kb-builder.md`.
 
 #### Step 4: Verify output
 
@@ -103,11 +104,11 @@ If agent-driven setup doesn't work, you can set up manually:
 cp .agentify/AGENTS.template.md AGENTS.md
 ```
 
-#### Step 2: Replace placeholders in AGENTS.md
+#### Step 2: Fill required values in AGENTS.md
 
 - `{{PROJECT_NAME}}` → Your project name (e.g., "MyApp Backend")
 - `{{PROJECT_DESCRIPTION}}` → One sentence (e.g., "REST API for mobile application")
-- `{{MAIN_CONSTRAINT}}` → What should never be broken (e.g., "API backward compatibility")
+- Keep constraints as a list in `docs/constraints.md`
 
 #### Step 3: Create folder structure
 

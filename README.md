@@ -49,7 +49,7 @@ In your project:
 Run .agentify/setup.prompt.md
 ```
 
-Then answer 4 setup questions.
+Then answer 3 setup questions.
 
 Full setup and manual fallback:
 - [Getting Started](docs/getting-started.md)

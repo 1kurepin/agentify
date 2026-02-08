@@ -8,6 +8,9 @@
 
 | When You're... | Rule |
 |----------------|------|
+| Any task | Apply the general rules in this file first; keep them active throughout |
+| User request matches a workflow trigger | After general rules, read matching file in `{{WORKFLOWS_PATH}}` and follow it |
+| User request matches a skill trigger/topic | After general rules and active workflow, load relevant skills from `{{SKILLS_PATH}}` |
 | Unsure about a fact | Mark as `TBD`, don't invent |
 | Making breaking changes | STOP → get explicit approval |
 | Changing architecture/domain/constraints | Check KB impact; update affected files in `{{KB_PATH}}` |
@@ -253,8 +256,10 @@ Project-specific knowledge in `{{KB_PATH}}`:
 
 ### Skills & Workflows
 
-- Skills: `{{SKILLS_PATH}}`
-- Workflows: `{{WORKFLOWS_PATH}}`
+- Skills: `{{SKILLS_PATH}}` (load when request matches a skill trigger phrase or topic)
+- Workflows: `{{WORKFLOWS_PATH}}` (if request matches a workflow trigger phrase, read that workflow file first, then follow it)
+- Execution order: general rules in this file → workflow (if triggered) → skills (if relevant)
+- Conflict priority: general rules > workflow > skill
 
 ### Project-Specific Rules
 

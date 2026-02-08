@@ -118,16 +118,22 @@ Based on AI tool from Step 1, create appropriate config:
 **Copilot** → `.github/copilot-instructions.md`:
 ```markdown
 Read [AGENTS.md](../AGENTS.md) for agent instructions.
+Apply this order: general rules in `AGENTS.md` -> matching workflow in `.github/prompts/` (if trigger) -> relevant skills in `.github/skills/` (if trigger/topic).
+If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
 ```
 
 **Cursor** → `.cursorrules`:
 ```markdown
 Read AGENTS.md in project root for instructions.
+Apply this order: general rules in `AGENTS.md` -> matching workflow in `.cursor/prompts/` (if trigger) -> relevant skills in `.cursor/skills/` (if trigger/topic).
+If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
 ```
 
 **Claude** → `CLAUDE.md`:
 ```markdown
 Read AGENTS.md for agent instructions.
+Apply this order: general rules in `AGENTS.md` -> matching workflow in `.claude/prompts/` (if trigger) -> relevant skills in `.claude/skills/` (if trigger/topic).
+If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
 ```
 
 **Other** → Tell user to point their tool to `AGENTS.md` (e.g., Codex, Windsurf, or any unlisted tool).

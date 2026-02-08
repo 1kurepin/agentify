@@ -11,6 +11,7 @@
 - {{Trigger condition 3}}
 
 **Trigger phrases**: "{{phrase 1}}", "{{phrase 2}}", "{{phrase 3}}"
+**Priority**: This skill refines execution only. `AGENTS.md` general rules and active workflow instructions override this skill.
 
 ---
 

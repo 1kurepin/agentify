@@ -1,6 +1,7 @@
 # Workflow: {{WORKFLOW_NAME}}
 
 **{{Brief description of what this workflow accomplishes.}}**
+**Trigger**: "{{phrase 1}}", "{{phrase 2}}"
 
 ---
 
@@ -8,8 +9,6 @@
 
 - {{Trigger condition 1}}
 - {{Trigger condition 2}}
-
-**Trigger phrases**: "{{phrase 1}}", "{{phrase 2}}"
 
 ---
 

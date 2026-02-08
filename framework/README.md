@@ -142,6 +142,11 @@ Run `.agentify/questionnaires/skills-builder.md` — create custom skills (speci
 1. Copy from `.agentify/templates/workflows/`
 2. Save to your tool's prompts folder (e.g., `.github/prompts/` for Copilot, `.cursor/prompts/` for Cursor)
 
+Use `**When to load**` and `**Trigger phrases**` in each skill file.
+Use a `**Trigger**: "phrase 1", "phrase 2"` line in each workflow file.
+Execution order: general rules in `AGENTS.md` -> matching workflow (if trigger) -> relevant skills (if trigger/topic).
+If instructions conflict, priority is: `AGENTS.md` > workflow > skill.
+
 ---
 
 ## Customizing Rules

@@ -125,7 +125,7 @@ Run `.agentify/questionnaires/skills-builder.md` — create custom skills (speci
 ├── setup.prompt.md        # One-prompt installation
 ├── questionnaires/        # KB building questionnaires
 ├── bootstrap-prompts/     # Auto-generation prompts
-└── templates/             # KB, skills, workflow templates
+└── templates/             # KB, KB-draft, skills, workflow templates
 ```
 
 ---

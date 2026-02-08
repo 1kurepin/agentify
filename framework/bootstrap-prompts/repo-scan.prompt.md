@@ -56,96 +56,22 @@ Look for:
 
 ## Step 3: Generate Drafts
 
-Create draft files in `temp/kb-drafts/`:
+Create `temp/kb-drafts/` if it doesn't exist.
 
-### project_context.draft.md
+Use templates from `.agentify/templates/kb-drafts/` to generate draft files:
 
-```markdown
-# Project Context (Draft)
+| Template | Output |
+|----------|--------|
+| `project_context.draft.template.md` | `temp/kb-drafts/project_context.draft.md` |
+| `domain.draft.template.md` | `temp/kb-drafts/domain.draft.md` |
+| `glossary.draft.template.md` | `temp/kb-drafts/glossary.draft.md` |
+| `architecture.draft.template.md` | `temp/kb-drafts/architecture.draft.md` |
+| `constraints.draft.template.md` | `temp/kb-drafts/constraints.draft.md` |
 
-## What This Is
-[inferred from README/docs, or TBD]
-
-## Tech Stack
-[from config files and repo evidence]
-
-## What This Is NOT
-[scope boundaries from repo evidence, or TBD]
-
-## Evidence
-- [file path and short note]
-
-## TBD
-- [what still needs user confirmation]
-```
-
-### domain.draft.md
-
-```markdown
-# Domain (Draft)
-
-## Core Entities
-| Entity | Description | Source |
-|--------|-------------|--------|
-| [entity] | [meaning] | [file] |
-
-## Entity Relationships
-[from code/docs, or TBD]
-
-## Business Rules
-[from validations/tests/docs, or TBD]
-
-## TBD
-- [domain points needing clarification]
-```
-
-### glossary.draft.md
-
-```markdown
-# Glossary (Draft)
-
-## Confirmed Terms
-| Term | Definition | Source |
-|------|------------|--------|
-| [found term] | [inferred meaning] | [file where found] |
-
-## TBD Terms (Need Clarification)
-| Term | Context | Question |
-|------|---------|----------|
-| [unclear term] | [where seen] | [what to ask] |
-```
-
-### architecture.draft.md
-
-```markdown
-# Architecture (Draft)
-
-## Overview
-[inferred from README/structure, or TBD]
-
-## Components (from directory structure)
-- [folder] — [inferred purpose]
-
-## External Dependencies (from config)
-- [dependency] — [purpose if clear, else TBD]
-
-## TBD
-- [list what couldn't be determined]
-```
-
-### constraints.draft.md
-
-```markdown
-# Constraints (Draft)
-
-## Apparent Constraints
-| Constraint | Evidence | Confidence |
-|------------|----------|------------|
-| [inferred rule] | [where found] | High/Medium/Low |
-
-## TBD
-- [constraints that likely exist but couldn't confirm]
-```
+When filling templates:
+- Keep `TBD` when evidence is insufficient
+- Include evidence/source paths for non-trivial claims
+- Keep `(Draft)` in document titles
 
 ---
 

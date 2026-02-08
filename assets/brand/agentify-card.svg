@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1118" height="329" viewBox="0 0 1118 329" fill="none" role="img" aria-labelledby="title desc">
+  <title id="title">Agentify GitHub repository card</title>
+  <desc id="desc">Branded GitHub card: logo, wordmark, tagline and three layer chips.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1118" y2="329" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#061529" />
+      <stop offset="1" stop-color="#032E37" />
+    </linearGradient>
+
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M 56 0 L 0 0 0 56" fill="none" stroke="rgba(245,247,250,0.06)" stroke-width="1" />
+    </pattern>
+
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="26" />
+    </filter>
+
+    <linearGradient id="glowBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3B82F6" stop-opacity="0.22" />
+      <stop offset="1" stop-color="#3B82F6" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="glowTeal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2DD4BF" stop-opacity="0.16" />
+      <stop offset="1" stop-color="#2DD4BF" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect x="1" y="1" width="1116" height="327" rx="28" fill="url(#bg)" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
+  <rect x="1" y="1" width="1116" height="327" rx="28" fill="url(#grid)" />
+
+  
+  <ellipse cx="927" cy="85" rx="290" ry="296" fill="url(#glowBlue)" filter="url(#softGlow)" />
+  <ellipse cx="961" cy="72" rx="245" ry="263" fill="url(#glowTeal)" filter="url(#softGlow)" />
+
+  
+  <g transform="translate(64 60.48)">
+    
+    <g transform="translate(0 0)">
+      <rect x="18.82" y="0" width="26.42" height="16" rx="5.28" fill="#2DD4BF" />
+      <rect x="9.59" y="21.76" width="35.65" height="16" rx="5.28" fill="#3B82F6" />
+      <rect x="0" y="43.52" width="45.24" height="16" rx="5.28" fill="#22C55E" />
+    </g>
+  </g>
+
+  
+  <text x="122.3" y="120" fill="#F5F7FA" font-family="Inter, Segoe UI, SF Pro Display, Helvetica, Arial, sans-serif" font-size="82" font-weight="700">Agentify</text>
+
+  
+  <text x="64" y="192" fill="rgba(210,226,242,0.75)" font-family="Inter, Segoe UI, SF Pro Text, Helvetica, Arial, sans-serif" font-size="34" font-weight="500">Framework that makes any project AI‑agent‑ready</text>
+
+  
+  <g transform="translate(64 252)" font-family="Inter, Segoe UI, SF Pro Text, Helvetica, Arial, sans-serif" font-size="22" fill="rgba(235,245,255,0.92)">
+    <g>
+      <rect width="250" height="46" rx="23" fill="rgba(8,24,34,0.59)" stroke="rgba(255,255,255,0.18)" stroke-width="2" />
+      <circle cx="28" cy="23" r="8" fill="#3B82F6" />
+      <text x="52" y="30.5">Core rules</text>
+    </g>
+    <g transform="translate(268 0)">
+      <rect width="292" height="46" rx="23" fill="rgba(8,24,34,0.59)" stroke="rgba(255,255,255,0.18)" stroke-width="2" />
+      <circle cx="28" cy="23" r="8" fill="#2DD4BF" />
+      <text x="52" y="30.5">Knowledge base</text>
+    </g>
+    <g transform="translate(578 0)">
+      <rect width="330" height="46" rx="23" fill="rgba(8,24,34,0.59)" stroke="rgba(255,255,255,0.18)" stroke-width="2" />
+      <circle cx="28" cy="23" r="8" fill="#22C55E" />
+      <text x="52" y="30.5">Skills &amp; workflows</text>
+    </g>
+  </g>
+</svg>

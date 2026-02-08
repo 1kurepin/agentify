@@ -1,4 +1,8 @@
-<img src="assets/brand/agentify_logo_transparent_tight.png" alt="Agentify" width="520" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/brand/agentify_theme_logo_variants/agentify_logo_dark_tight.png">
+
+  <img src="assets/brand/agentify_theme_logo_variants/agentify_logo_light_tight.png" alt="Agentify" width="520">
+</picture>
 
 **Foundation for AI-assisted development.**  
 One-time setup. Safe defaults. Layered growth.

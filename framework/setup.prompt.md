@@ -87,6 +87,10 @@ Project documentation for AI agents.
 - `constraints.md` — Critical project rules
 
 Run `.agentify/questionnaires/kb-builder.md` or `.agentify/bootstrap-prompts/repo-scan.prompt.md` to create or update these files.
+
+## Maintenance
+
+After architecture/domain/constraints/contract changes, check KB impact and update affected files in `docs/`.
 ```
 
 ---
@@ -145,6 +149,7 @@ Read AGENTS.md for agent instructions.
 **Ready to use:**
 - Write code → Agent follows code-quality skill
 - Review code → Run "code review" or `[workflows_path]/code-review.prompt.md`
+- After architecture/domain/constraints/contract changes → check KB impact and update `docs/` files if needed
 
 **Next steps (optional):**
 

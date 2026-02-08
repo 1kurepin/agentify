@@ -180,6 +180,9 @@ This creates or updates:
 
 It can also suggest project-specific rules for `AGENTS.md` and apply them only after your approval.
 
+**Ongoing maintenance default:** after architecture/domain/constraints/contract changes, check KB impact and update affected files in `docs/`.
+The default `code-review` workflow includes a required `KB Impact` result (`none` or updated files).
+
 ### When to add Layer 3 (Skills & Workflows)
 
 **Signs you need it:**

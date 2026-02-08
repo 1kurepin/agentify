@@ -10,6 +10,7 @@
 |----------------|------|
 | Unsure about a fact | Mark as `TBD`, don't invent |
 | Making breaking changes | STOP → get explicit approval |
+| Changing architecture/domain/constraints | Check KB impact; update affected files in `{{KB_PATH}}` |
 | Starting implementation | Share plan first, get user approval, then execute |
 | Working on large tasks | Save detailed plan in `temp/feature-short-name-plan-YYYY-MM-DD.md` |
 | Adding new code | Find existing patterns first, copy them |
@@ -85,6 +86,12 @@ Vague approval ("just do it") is not enough. Confirmation must reference the act
 4. Verify it matches existing style
 
 **Why**: Consistent code is easier to maintain. Don't invent conventions.
+
+### 7. Knowledge Base Impact
+
+When a change affects architecture, domain behavior, constraints, or external contracts:
+- Check whether Knowledge Base files in `{{KB_PATH}}` need updates
+- Update affected files, or explicitly state why no KB update is needed
 
 ---
 
@@ -199,6 +206,7 @@ Signs of being stuck:
 - [ ] No secrets, PII, or internal URLs in code
 - [ ] No breaking changes (or explicitly approved)
 - [ ] Documentation updated (if behavior changed)
+- [ ] KB impact checked; `{{KB_PATH}}` files updated if needed
 
 ### Response Format
 

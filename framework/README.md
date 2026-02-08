@@ -114,6 +114,8 @@ Run `.agentify/bootstrap-prompts/repo-scan.prompt.md` — agent scans your repo,
 
 Run `.agentify/questionnaires/skills-builder.md` — create custom skills (specialized knowledge) and workflows (repeatable processes).
 
+**Ongoing maintenance default**: after architecture/domain/constraints/contract changes, check KB impact and update affected files in `docs/`.
+
 ---
 
 ## Framework Structure

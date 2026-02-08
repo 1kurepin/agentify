@@ -1,7 +1,7 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/brand/agentify_theme_logo_variants/agentify_logo_dark_tight.png">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/brand/logos/agentify_logo_dark_tight.png">
 
-  <img src="assets/brand/agentify_theme_logo_variants/agentify_logo_light_tight.png" alt="Agentify" width="520">
+  <img src="assets/brand/logos/agentify_logo_light_tight.png" alt="Agentify" width="520">
 </picture>
 
 **Tool-agnostic framework for AI coding agents.**  

@@ -35,44 +35,44 @@ The rules evolve. When we see agents fail in new ways, we update the defaults. W
 
 ### 1. Safe Defaults
 
-**Flip the agent's priorities:**
+**Shift the agent toward caution:**
 
-| Default Behavior | Safe Behavior |
+| Default Behavior | Agentify Behavior |
 |------------------|---------------------|
 | Be helpful at all costs | Be accurate, even if less helpful |
 | Assume you know | Admit when you don't know |
 | Proceed quickly | Pause when uncertain |
 | Write new code | Copy existing patterns |
+| Act autonomously | Get human approval first |
 
-This isn't about being restrictive — it's about **accuracy over assumption**.
+Most core rules are constraints — don't invent facts, don't proceed on risky changes, don't break interfaces, don't leak secrets. This is intentional. Agents default to action; these rules add a bias toward **accuracy and caution** where it matters most.
 
-**Why**: In coding, wrong-but-confident is worse than uncertain-but-honest.
+**Why**: In coding, wrong-but-confident is worse than uncertain-but-honest. The cost of undoing agent mistakes often exceeds the cost of slowing agents down.
+
+**Tradeoff**: Agents under these rules trade some speed for reliability. Teams with mature agent workflows should loosen the defaults to match their confidence level — the framework expects you to.
 
 ### 2. Foundation First
 
-**Start with essentials, extend as needed.**
+**Start with a working foundation, then build on it.**
 
-Core rules cover what 80%+ of projects need. More specialized guidance goes in Skills and Workflows.
+The framework gives you safety rules that work immediately, plus an organizational structure for everything project-specific: Knowledge Base, Skills, and Workflows. Templates and questionnaires help you fill these in.
 
-**What stays in core:**
-- Universal rules that apply everywhere
-- Safe defaults every project benefits from
+**What ships ready to use:**
+- Safety rules that improve agent behavior from day one
+- A code quality skill and code review workflow
+- Organizational structure (KB, Skills, Workflows)
+- Templates and questionnaires to build project-specific content
 
-**What goes in extension layers:**
-- Technology-specific guidance (Skills)
-- Domain-specific expertise (Skills)
-- Project-specific workflows (Workflows)
+**What you build over time:**
+- Project-specific rules for your codebase
+- Knowledge Base entries with domain content
+- Skills tailored to your stack and conventions
 
-**Why**: Good foundations enable growth. Complex agent systems are fine — they just need the right layers.
+**Why**: A universal framework can't ship your project's specifics. Instead, it gives you a structure that makes building them straightforward. The more you invest in Layers 2 and 3, the more useful your agents become.
 
 ### 3. Universal and Tool-Agnostic
 
-Rules must work for:
-- Any programming language
-- Any project size
-- Any domain (web, mobile, embedded, ML, etc.)
-- Any team size
-- **Any AI tool** (including but not limited to GitHub Copilot, Claude Code, Codex, Cursor, Windsurf, and future tools)
+Rules must work for any language, project size, domain, team, and AI tool — including but not limited to GitHub Copilot, Claude Code, Codex, Cursor, Windsurf, and future tools.
 
 **What this means:**
 - No technology assumptions in core rules — works with any stack
@@ -80,7 +80,9 @@ Rules must work for:
 - Technology-specific guidance goes in Skills
 - Tool-specific config is generated during setup, not baked into rules
 
-**Why**: Tools evolve. Languages change. Your foundation should outlast any single tool or tech stack.
+**Tradeoff**: Universal rules are necessarily general. The core says "follow existing patterns" — your Skill says "we use Repository pattern for data access." The core provides the discipline; Skills and KB provide the specifics. Both matter.
+
+**Why**: Tools evolve. Languages change. Your foundation should outlast any single tool or tech stack. Project-specific guidance goes in layers that are easy to update.
 
 ### 4. Layers Enable Growth
 
@@ -106,11 +108,11 @@ Agentify builds a **layered foundation**. Start with Layer 1, add more when need
 - **When you want advanced behaviors**: Add Layer 3 (Skills/Workflows)
 
 Each layer builds on previous ones:
-- Layer 1 works alone
-- Layer 2 uses Layer 1 rules + adds project context
-- Layer 3 uses both + adds specialized expertise
+- Layer 1 works alone — safety rules and a usable starting point
+- Layer 2 uses Layer 1 rules + adds project context — agents start understanding your domain
+- Layer 3 uses both + adds specialized expertise — agents follow your team's specific practices
 
-**Why**: Different projects need different depth. Foundation enables growth, not limits it.
+**Why**: Different projects need different depth. Layer 1 gives you safety immediately. Layers 2 and 3 are where agents start feeling like they understand your project.
 
 ### 5. Edit Directly
 
@@ -132,14 +134,15 @@ After setup:
 
 ### Why Keep It Concise?
 
-Core AGENTS.md stays **as short as possible**. This isn't arbitrary:
+Shorter rules mean agents are more likely to follow them, context windows stay open for real work, and developers actually read the file.
 
 - **Agents get lost in long docs** — The longer the rules, the higher chance agent forgets something mid-task
 - **Context window matters** — Shorter rules = more room for actual work
-- **Actually readable** — Developers will skim short docs. They won't read walls of text.
 - **Earns its place** — Every line must apply to 80%+ of projects. Edge cases go in Skills.
 
-Brevity ensures rules get followed.
+The generated AGENTS.md includes both safety rules and working-style guidance (~300 lines total). This is a tension: we value brevity but also include process guidance that many teams find useful. Teams should trim sections that don't match their workflow — the framework is designed to be edited.
+
+**Principle**: Every line should earn its place. If it doesn't apply to your project, remove it.
 
 ### Why Not Just a Template?
 
@@ -194,24 +197,30 @@ Starting with useful defaults > starting empty.
 
 ## Trade-offs We Accept
 
-| We Accept... | In Exchange For... |
-|--------------|-------------------|
-| Direct setup presets for a small core tool set | Simple configuration |
-| Concise core rules | Rules that get followed |
-| No enforcement | Guidance over gates |
-| Manual KB building | No magic, no surprises |
-| Direct editing only | Simplicity and ownership |
+| We Choose... | Over... | Because... |
+|---|---|---|
+| Safe defaults | Maximum agent speed | Undoing agent mistakes costs more than slowing agents down |
+| Direct editing only | Config generation, sync files | Simplicity and real ownership |
+| Manual KB building | Auto-generated context | No magic, no surprises, higher quality |
+| Direct setup presets for core tools | Unlimited tool configs | Simple configuration that covers most users |
+| Universal core rules | Stack-specific core rules | Foundation should outlast any tool or language |
+| Guidance over enforcement | Hard gates on agent behavior | No enforcement mechanism works across all AI tools today. Rules-as-guidance is the most portable approach — and it works well enough that agents measurably improve. Not perfect, but practical. |
 
 ---
 
 ## Evolution
 
-Agentify will evolve, but these principles are stable:
+Agentify will evolve. These commitments are stable:
 
-1. Safe defaults > "helpful at all costs"
-2. Foundation first, complexity in layers
-3. Universal core > specific core (specifics go in Skills)
-4. Direct editing > generated files
-5. Layered growth > monolithic complexity
+1. Safe defaults > unconstrained agents
+2. Universal core, specificity in Skills and KB
+3. Direct editing > generated files
+4. Layered growth > monolithic complexity
+5. Honest about tradeoffs
 
-New features must pass: "Does this strengthen the foundation or belong in an extension layer?"
+Areas we're actively improving:
+- Making the core template leaner without losing safety
+- Exploring lightweight self-verification as a complement to guidance
+- Shipping richer default Skills and Workflows
+
+New features must pass: "Does this make agents meaningfully better for most projects?"

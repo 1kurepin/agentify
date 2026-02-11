@@ -68,12 +68,17 @@ Choose "Other" — you'll get generic `AGENTS.md` that works with any tool.
 
 ### Agent ignores the rules. Why?
 
-Common causes:
-1. **Tool config missing**: Check tool-specific config file exists
-2. **Context too long**: Rules may drop out of context window
+No AI tool today guarantees that instructions will always be followed. Agentify uses guidance (markdown rules) rather than hard enforcement — this is the most portable approach across all AI tools, and it works well in practice. When it doesn't, common causes are:
+
+1. **Tool config missing**: Check that the tool-specific config file exists (it tells the agent to read AGENTS.md)
+2. **Context too long**: In long sessions, rules may drop out of the context window
 3. **Explicit instruction overrides**: Your prompt may override rules
 
-Try: "Read AGENTS.md first, then [your request]"
+**What helps:**
+- Start with: "Read AGENTS.md first, then [your request]"
+- Keep AGENTS.md focused — trim sections you don't use
+- For critical rules, reinforce them in your prompt
+- Invest in Skills and KB — specific instructions tend to be followed more reliably than general ones
 
 ### How do I update rules?
 

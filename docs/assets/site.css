@@ -50,7 +50,7 @@ body {
   color: var(--text-main);
   text-rendering: optimizeLegibility;
   background-color: var(--brand-navy);
-  background-image: linear-gradient(158deg, var(--brand-navy) 0%, var(--brand-deep-teal) 68%);
+  background-image: linear-gradient(158deg, var(--brand-navy) 0%, #07233a 60%, #062b3b 100%);
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   position: relative;
@@ -59,8 +59,8 @@ body {
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
 }
 
 html::-webkit-scrollbar-track,
@@ -94,7 +94,7 @@ body:hover::-webkit-scrollbar-thumb {
   background:
     radial-gradient(900px 500px at 14% 6%, rgba(45, 212, 191, 0.16), transparent 70%),
     radial-gradient(800px 400px at 85% 14%, rgba(59, 130, 246, 0.14), transparent 68%),
-    radial-gradient(600px 340px at 50% 100%, rgba(34, 197, 94, 0.09), transparent 72%);
+    radial-gradient(700px 360px at 50% 100%, rgba(34, 197, 94, 0.04), transparent 74%);
 }
 
 .site-grid-overlay {
@@ -158,7 +158,7 @@ body:hover::-webkit-scrollbar-thumb {
 }
 
 .brand-link img {
-  height: clamp(52px, 3.8vw, 62px);
+  height: clamp(56px, 4.2vw, 68px);
   width: auto;
   display: block;
 }
@@ -206,6 +206,7 @@ body:hover::-webkit-scrollbar-thumb {
 .nav-link:hover {
   color: var(--text-main);
   background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(183, 197, 214, 0.3);
 }
 
 .nav-link:focus-visible {
@@ -231,11 +232,7 @@ body:hover::-webkit-scrollbar-thumb {
 }
 
 .site-main {
-  padding: 2.35rem 0 4rem;
-}
-
-.page-home .site-main {
-  padding-bottom: 1.35rem;
+  padding: 2.35rem 0 1.15rem;
 }
 
 .docs-layout {
@@ -393,6 +390,7 @@ body:not(.has-js) .doc-toc-rail {
   border: 1px solid rgba(183, 197, 214, 0.25);
   background: rgba(5, 16, 30, 0.9);
   overflow-x: auto;
+  scrollbar-gutter: stable both-edges;
 }
 
 .doc-content pre {
@@ -427,6 +425,7 @@ body:not(.has-js) .doc-toc-rail {
   border: 1px solid rgba(183, 197, 214, 0.22);
   background: rgba(3, 25, 42, 0.66);
   overflow: hidden;
+  scrollbar-gutter: stable both-edges;
 }
 
 .doc-content th,
@@ -692,9 +691,10 @@ body:not(.has-js) .doc-toc-rail {
   gap: 0.16rem;
   max-height: calc(100vh - var(--header-height) - 5rem);
   overflow: auto;
-  scrollbar-gutter: stable;
+  scrollbar-gutter: stable both-edges;
   scrollbar-width: thin;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  padding-right: 0.26rem;
 }
 
 .doc-toc-list::-webkit-scrollbar {
@@ -753,13 +753,8 @@ body:not(.has-js) .doc-toc-rail {
 }
 
 .site-footer {
-  padding: 1.15rem 0 1.7rem;
+  padding: 0.75rem 0 1.35rem;
   color: var(--text-muted);
-}
-
-.page-home .site-footer {
-  padding-top: 0.55rem;
-  padding-bottom: 1.2rem;
 }
 
 .footer-shell {
@@ -937,11 +932,7 @@ body:not(.has-js) .doc-toc-rail {
   }
 
   .site-main {
-    padding-bottom: 3rem;
-  }
-
-  .page-home .site-main {
-    padding-bottom: 1.1rem;
+    padding-bottom: 0.95rem;
   }
 
   .doc-content {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1041" height="317" viewBox="0 0 1041 317" fill="none">
+  <g>
+    <rect x="117" y="101.0" width="52" height="31" rx="10" fill="#2DD4BF"/>
+    <rect x="99" y="143.0" width="70" height="31" rx="10" fill="#3B82F6"/>
+    <rect x="80" y="185.0" width="89" height="31" rx="10" fill="#22C55E"/>
+  </g>
+  <text x="195" y="158.5" fill="#F5F7FA"
+        font-family="Inter, Segoe UI, SF Pro Display, Helvetica, Arial, sans-serif"
+        font-size="160" font-weight="700"
+        dominant-baseline="central">Agentify</text>
+</svg>

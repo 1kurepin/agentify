@@ -10,3 +10,9 @@ plugins:
   - jekyll-seo-tag
 webmaster_verifications:
   google: YOZ4eM98SEg2bxl0j-IWMalxav-Jxh5BITq7qNLRCKc
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default

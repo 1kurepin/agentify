@@ -2,7 +2,6 @@
 title: Agentify Documentation
 description: Learn how to use Agentify to make any repository AI-agent-ready with safe defaults, AGENTS.md, knowledge base files, skills, and workflows.
 permalink: /
-google_site_verification: "YOZ4eM98SEg2bxl0j-IWMalxav-Jxh5BITq7qNLRCKc"
 ---
 
 # Agentify Documentation

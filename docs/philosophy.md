@@ -1,3 +1,9 @@
+---
+title: Agentify Design Philosophy
+description: Understand the principles behind Agentify including safe defaults, layered growth, and tool-agnostic guidance.
+permalink: /philosophy/
+---
+
 # Design Philosophy
 
 Why Agentify works the way it does.

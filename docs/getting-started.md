@@ -1,3 +1,9 @@
+---
+title: Getting Started with Agentify
+description: Install Agentify, run setup, and create an AGENTS.md foundation for AI coding agents.
+permalink: /getting-started/
+---
+
 # Getting Started
 
 Build a foundation for AI-assisted development in your project.

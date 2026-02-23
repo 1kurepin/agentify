@@ -1,0 +1,12 @@
+title: Agentify
+description: Tool-agnostic framework for AI coding agents with AGENTS.md templates, layered knowledge base, and reusable skills/workflows.
+url: "https://1kurepin.github.io"
+baseurl: "/agentify"
+lang: en_US
+timezone: UTC
+markdown: kramdown
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+webmaster_verifications:
+  google: YOZ4eM98SEg2bxl0j-IWMalxav-Jxh5BITq7qNLRCKc

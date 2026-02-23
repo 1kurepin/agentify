@@ -1,3 +1,9 @@
+---
+title: Agentify FAQ
+description: Frequently asked questions about Agentify setup, customization, AI tool support, and troubleshooting.
+permalink: /faq/
+---
+
 # Frequently Asked Questions
 
 ---

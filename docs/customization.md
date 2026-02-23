@@ -1,3 +1,9 @@
+---
+title: Agentify Customization Guide
+description: Customize AGENTS.md, project knowledge base, skills, and workflows for your AI-assisted development process.
+permalink: /customization/
+---
+
 # Customization Guide
 
 How to build on your foundation.

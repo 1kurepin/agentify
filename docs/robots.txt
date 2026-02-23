@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://1kurepin.github.io/agentify/sitemap.xml

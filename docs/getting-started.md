@@ -24,7 +24,7 @@ Build a foundation for AI-assisted development in your project.
 
 ## Installation Methods
 
-### Method 1: Git Clone (Recommended)
+### Method 1: Command-Based Setup (Recommended)
 
 ```bash
 # Clone the repository
@@ -37,13 +37,7 @@ cp -r agentify/framework your-project/.agentify
 rm -rf agentify
 ```
 
-### Method 2: Download ZIP
-
-1. Download repository as ZIP from GitHub
-2. Extract
-3. Copy `framework/` folder to your project as `.agentify/`
-
-### Method 3: Manual Copy
+### Method 2: Manual File Copy
 
 Copy these files to `your-project/.agentify/`:
 - `AGENTS.template.md`

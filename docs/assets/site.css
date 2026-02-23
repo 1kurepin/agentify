@@ -38,7 +38,7 @@
 html {
   background-color: var(--brand-navy);
   scroll-behavior: smooth;
-  scrollbar-width: thin;
+  scrollbar-width: auto;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
@@ -51,16 +51,10 @@ body {
   text-rendering: optimizeLegibility;
   background-color: var(--brand-navy);
   background-image: linear-gradient(158deg, var(--brand-navy) 0%, #07233a 60%, #062b3b 100%);
-  scrollbar-width: thin;
+  scrollbar-width: auto;
   scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   position: relative;
   isolation: isolate;
-}
-
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
 }
 
 html::-webkit-scrollbar-track,

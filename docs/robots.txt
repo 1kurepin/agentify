@@ -3,3 +3,4 @@ Allow: /
 Disallow:
 
 Sitemap: https://1kurepin.github.io/agentify/sitemap.xml
+Sitemap: https://1kurepin.github.io/agentify/sitemap.txt
